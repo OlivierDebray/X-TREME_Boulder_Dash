@@ -4,6 +4,7 @@ import contract.IEventPerformer;
 import contract.IGraphicsBuilder;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Observable;
@@ -17,7 +18,7 @@ public class GameFrame extends JFrame implements KeyListener {
     private static long serialVersionUID = -1112124206501543946L ;
     public IEventPerformer eventPerformer ;
 
-    public void GameFrame (String title , IEventPerformer eventPerformer , IGraphicsBuilder graphicsBuilder , Observable observable) throws HeadLessException {
+    public GameFrame (String title , IEventPerformer eventPerformer , IGraphicsBuilder graphicsBuilder , Observable observable) throws HeadlessException {
 
     }
 
