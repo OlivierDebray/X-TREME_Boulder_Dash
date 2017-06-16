@@ -63,3 +63,4 @@ $RECYCLE.BIN/
 *.lnk
 .idea/workspace.xml
 .idea/vcs.xml
+.idea/compiler.xml
