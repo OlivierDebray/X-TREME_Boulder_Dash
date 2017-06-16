@@ -1,12 +1,16 @@
 package view;
 
+import contract.IBoulderDashModel;
+import contract.IOrderPerformer;
+import contract.IViewSystem;
+
 import java.util.Observable;
 
 /**
  * Created by Vincent on 14/06/2017.
  */
 
-public class BoulderDashView implements IViewSystem , Runnable {
+public class BoulderDashView implements IViewSystem, Runnable {
     private Observable observable ;
     private EventPerformer eventPerformer ;
     private GraphicsBuilder graphicsBuilder ;
@@ -20,6 +24,16 @@ public class BoulderDashView implements IViewSystem , Runnable {
 
     @Override
     public void run() {
+
+    }
+
+    @Override
+    public void displayMessage(String message) {
+
+    }
+
+    @Override
+    public void closeAll() {
 
     }
 }

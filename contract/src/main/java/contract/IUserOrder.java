@@ -6,5 +6,5 @@ package contract;
  */
 
 public interface IUserOrder {
-    Order getOrder ;
+    String getOrder () ;
 }

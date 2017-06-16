@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 
 public interface IBoulderDashModel {
-    void buildArea (Dimension dimension) ;
+    void buildArea (int width , int height) ;
     IArea getArea () ;
     void addMobile (IMobile mobile) ;
     void removeMobile (IMobile mobile) ;

@@ -12,7 +12,7 @@ public class UserOrder implements IUserOrder {
     public void UserOrder (Order order) {
     }
 
-    public Order getOrder(){
+    public String getOrder(){
         return null;
     }
 }

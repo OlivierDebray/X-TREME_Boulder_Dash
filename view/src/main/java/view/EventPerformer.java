@@ -1,5 +1,8 @@
 package view;
 
+import contract.IEventPerformer;
+import contract.IOrderPerformer;
+
 import java.awt.event.KeyEvent;
 
 /**
@@ -7,7 +10,7 @@ import java.awt.event.KeyEvent;
  */
 
 public class EventPerformer implements IEventPerformer {
-    private OrderPerformer orderPerformer ;
+    private IOrderPerformer orderPerformer ;
 
     public EventPerformer (IOrderPerformer orderPerformer){
         this.orderPerformer = orderPerformer ;

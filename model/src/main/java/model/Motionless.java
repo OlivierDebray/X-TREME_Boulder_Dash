@@ -1,5 +1,8 @@
 package model;
 
+import contract.IArea;
+import contract.IBoulderDashModel;
+
 import java.awt.*;
 
 /**
@@ -17,6 +20,7 @@ public class Motionless {
 
     public IBoulderDashModel getBoulderDashModel(){
 
+        return null;
     }
 
     public void buildAllImages(final String imageName){

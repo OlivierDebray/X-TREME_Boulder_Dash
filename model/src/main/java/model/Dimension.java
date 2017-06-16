@@ -8,8 +8,13 @@ public class Dimension {
     private int width;
     private int height;
 
-    public Dimension(final Dimension dimension){
+    public Dimension (final int width , final int height) {
+        this.setWidth(width);
+        this.setHeight(height);
+    }
 
+    public Dimension(final Dimension dimension){
+        this(dimension.getWidth(), dimension.getHeight());
     }
 
     public int getWidth(){

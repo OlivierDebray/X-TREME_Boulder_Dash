@@ -1,0 +1,8 @@
+contract\IEventPerformer.class
+contract\IGraphicsBuilder.class
+contract\IArea.class
+contract\IMobile.class
+contract\IBoulderDashModel.class
+contract\IViewSystem.class
+contract\IUserOrder.class
+contract\IOrderPerformer.class

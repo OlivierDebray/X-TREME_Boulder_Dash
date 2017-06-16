@@ -1,0 +1,15 @@
+model\Boulder.class
+model\dao\BoulderDashBDDConnector.class
+model\Motionless.class
+model\BoulderDashModel.class
+model\Mobile.class
+model\Hero.class
+model\Enemy.class
+model\Map.class
+model\Position.class
+model\Object.class
+model\dao\AbstractDAO.class
+model\Diamond.class
+model\Dimension.class
+model\Characters.class
+model\Direction.class
