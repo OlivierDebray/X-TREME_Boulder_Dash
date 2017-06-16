@@ -14,12 +14,9 @@ public class Mobile implements IMobile {
     private Direction direction;
     private BoulderDashModel boulderDashModel;
 
-
-
     public Mobile(Direction direction, Position position, final Dimension dimension, final int speed, final String image){
+
     }
-
-
 
     public void moveUp(){
 
@@ -44,6 +41,4 @@ public class Mobile implements IMobile {
     public void buildAllImages(final String imageName){
 
     }
-
-
 }

@@ -1,10 +1,9 @@
 package model;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-
 /**
  * Created by Théo on 16/06/2017.
  */
+
 public class Dimension {
     private int width;
     private int height;
@@ -22,12 +21,10 @@ public class Dimension {
     }
 
     public int getHeight(){
-        return this.height = height;
+        return this.height ;
     }
 
-    public void setHeight(){
+    public void setHeight(int height){
         this.height = height;
     }
-
-
 }

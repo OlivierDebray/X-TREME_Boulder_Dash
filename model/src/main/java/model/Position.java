@@ -3,6 +3,7 @@ package model;
 /**
  * Created by Théo on 16/06/2017.
  */
+
 public class Position {
     private int x;
     private int y;

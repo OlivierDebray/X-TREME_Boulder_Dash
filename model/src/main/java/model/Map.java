@@ -6,7 +6,6 @@ package model;
 public class Map implements IArea {
     private Dimension dimension;
 
-
     public Map(final Dimension dimension){
 
     }
