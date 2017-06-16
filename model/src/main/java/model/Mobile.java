@@ -1,30 +1,25 @@
 package model;
 
+
+import java.awt.*;
+
 /**
  * Created by Théo on 14/06/2017.
  */
-public class Mobile {
-    private int posX;
-    private int posY;
+public class Mobile implements IMobile {
+    private int speed;
+    private Image image[];
+    private Position position;
+    private Dimension dimension;
+    private Direction direction;
+    private BoulderDashModel boulderDashModel;
 
-    public Mobile(){
+
+
+    public Mobile(Direction direction, Position position, final Dimension dimension, final int speed, final String image){
     }
 
-    public void setPosX(int posX){
-        this.posX = posX;
-    }
 
-    public int getPosX(){
-        return this.posX;
-    }
-
-    public void setPosY(int posY){
-        this.posY = posY;
-    }
-
-    public int getPosY(){
-        return this.posY;
-    }
 
     public void moveUp(){
 
@@ -39,6 +34,14 @@ public class Mobile {
     }
 
     public void moveLeft(){
+
+    }
+
+    public IBoulderDashModel getBoulderDashModel(){
+
+    }
+
+    public void buildAllImages(final String imageName){
 
     }
 
