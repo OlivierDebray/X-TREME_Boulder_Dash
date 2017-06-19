@@ -15,25 +15,39 @@ import java.util.Observable;
  */
 
 public class GameFrame extends JFrame implements KeyListener {
-    private static long serialVersionUID = -1112124206501543946L ;
+    //private static long serialVersionUID = -1112124206501543946L ;
     public IEventPerformer eventPerformer ;
 
     public GameFrame (String title , IEventPerformer eventPerformer , IGraphicsBuilder graphicsBuilder , Observable observable) throws HeadlessException {
+        this.eventPerformer = eventPerformer;
+
+        this.setTitle(title);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.addKeyListener(this);
+        this.setVisible(true);
+
+        GamePanel gamePanel = new GamePanel(graphicsBuilder);
+        this.setContentPane(gamePanel);
+        this.setSize(graphicsBuilder.getGlobalWidth() + this.getInsets().left + this.getInsets().right, graphicsBuilder.getGlobalHeight() + this.getInsets().top + this.getInsets().bottom);
+        this.setLocationRelativeTo(null);
+        observable.addObserver(gamePanel);
+
+        this.setVisible(true);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent keyEvent) {
+        this.eventPerformer.eventPerform(keyEvent);
+    }
+
+    @Override
+    public void keyPressed(KeyEvent keyEvent) {
 
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased(KeyEvent keyEvent) {
 
     }
 }
