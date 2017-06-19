@@ -1,36 +1,132 @@
 package controller;
 
 import contract.IBoulderDashModel;
+import contract.IMobile;
 import contract.IUserOrder;
 import contract.IViewSystem;
 
+import java.util.ArrayList;
+
 /**
- * Created by Vincent on 16/06/2017.
+ * @author Olivier Debray olivier.debray@viacesi.fr
+ *         Made on 16/06/2017
  */
 public class BoulderDashController {
 
     private static int TIME_SLEEP = 30;
-    private IBoulderDashModel boulderDashModel;
     private boolean isGameOver = false;
+    private IBoulderDashModel boulderDashModel;
     private IViewSystem viewSystem ;
 
-    public BoulderDashController (IBoulderDashModel boulderDashModel){
-
+    public BoulderDashController (IBoulderDashModel boulderDashModel) {
+        this.boulderDashModel = boulderDashModel ;
     }
 
-    public void orderPerform (IUserOrder userOrder) {
-
+    public void orderPerform (IUserOrder userOrder) throws Exception {
+        if (userOrder != null) {
+            final IMobile hero = this.boulderDashModel.getPlayer() ;
+            if (hero != null) {
+                String direction ;
+                switch (userOrder.getOrder()) {
+                    case "UP":
+                        direction = userOrder.getOrder();
+                        break ;
+                    case "RIGHT":
+                        direction = userOrder.getOrder();
+                        break ;
+                    case "DOWN":
+                        direction = userOrder.getOrder();
+                        break ;
+                    case "LEFT":
+                        direction = userOrder.getOrder();
+                        break ;
+                    default:
+                        direction = "NONE" ;
+                        break ;
+                }
+                hero.setDirection(direction);
+                throw new Exception(direction) ;
+            }
+        }
     }
 
     public void play() {
-
+        this.gameLoop();
+        this.viewSystem.displayMessage("Game Over !");
+        this.viewSystem.closeAll();
     }
 
     public void gameLoop(){
+        while (!this.isGameOver) {
+            try {
+                Thread.sleep(TIME_SLEEP) ;
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt() ;
+            }
 
+            final ArrayList<IMobile> initialMobiles = new ArrayList<IMobile>() ;
+
+            /*
+             *  Version intiale
+             *
+             *  for (IMobile mobile : this.boulderDashModel.getMobiles()) {
+             *      initialMobiles.add(mobile) ;
+             *  }
+             */
+
+            /*
+             * Version conseillé par IntelliJ
+             */
+            initialMobiles.addAll(this.boulderDashModel.getMobiles());
+
+            for (IMobile mobile : initialMobiles) {
+                mobile.move() ;
+                this.manageEntityCollision(mobile);
+            }
+
+            this.boulderDashModel.setMobilesHavesMoved() ;
+        }
+    }
+
+    private void manageEntityCollision(IMobile entity) {
+        final ArrayList<IMobile> target = new ArrayList<IMobile>();
+        boolean isTargetHit = false ;
+
+        for (final IMobile mobile : this.boulderDashModel.getMobiles()) {
+            if (this.isEntityOnMobile(mobile, entity)) {
+                target.add(mobile) ;
+            }
+        }
+
+        for (final IMobile mobile : target) {
+            isTargetHit = isTargetHit || mobile.hit() ;
+        }
+
+        if (isTargetHit) {
+            this.boulderDashModel.removeMobile(entity) ;
+
+            if (entity.getClass().toString() == "class model.hero") {
+                this.isGameOver = true ;
+            }
+        }
+    }
+
+    private boolean isEntityOnMobile(IMobile mobile, IMobile entity) {
+        if (((entity.getPositionX() / entity.getWidth()) >= (mobile.getPositionX() / entity.getWidth()))
+                && ((entity.getPositionX() / entity.getWidth()) <= ((mobile.getPositionX() + mobile.getWidth()) / entity.getWidth()))) {
+            if (((entity.getPositionY() / entity.getHeight()) >= (mobile.getPositionY() / entity.getHeight()))
+                    && ((entity.getPositionY() / entity.getHeight()) <= ((mobile.getPositionY() + mobile.getHeight()) / entity.getHeight()))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void setViewSystem (IViewSystem viewSystem){
+        this.viewSystem = viewSystem ;
+    }
 
+    public IViewSystem getViewSystem () {
+        return this.viewSystem ;
     }
 }

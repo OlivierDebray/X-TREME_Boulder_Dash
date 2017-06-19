@@ -14,4 +14,5 @@ public interface IBoulderDashModel {
     void removeMobile (IMobile mobile) ;
     ArrayList<IMobile> getMobiles () ;
     void setMobilesHavesMoved() ;
+    IMobile getPlayer () ;
 }
