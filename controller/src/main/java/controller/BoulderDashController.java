@@ -2,6 +2,7 @@ package controller;
 
 import contract.IBoulderDashModel;
 import contract.IMobile;
+import contract.IOrderPerformer;
 import contract.IUserOrder;
 import contract.IViewSystem;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * @author Olivier Debray olivier.debray@viacesi.fr
  *         Made on 16/06/2017
  */
-public class BoulderDashController {
+public class BoulderDashController implements IOrderPerformer {
 
     private static int TIME_SLEEP = 30;
     private boolean isGameOver = false;

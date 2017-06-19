@@ -7,6 +7,6 @@ package contract;
 
 public interface IGraphicsBuilder {
     void applyModelToGraphic () ;
-    void getGlobalWidth () ;
-    void getGlobalHeight () ;
+    int getGlobalWidth () ;
+    int getGlobalHeight () ;
 }

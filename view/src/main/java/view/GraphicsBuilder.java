@@ -36,12 +36,12 @@ public class GraphicsBuilder implements IGraphicsBuilder {
     }
 
     @Override
-    public void getGlobalWidth() {
-
+    public int getGlobalWidth() {
+        return 0 ;
     }
 
     @Override
-    public void getGlobalHeight() {
-
+    public int getGlobalHeight() {
+        return 0 ;
     }
 }
