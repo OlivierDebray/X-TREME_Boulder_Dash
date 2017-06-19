@@ -1,13 +1,14 @@
 package controller;
 
 import contract.IBoulderDashModel;
+import contract.IOrderPerformer;
 import contract.IUserOrder;
 import contract.IViewSystem;
 
 /**
  * Created by Vincent on 16/06/2017.
  */
-public class BoulderDashController {
+public class BoulderDashController implements IOrderPerformer {
 
     private static int TIME_SLEEP = 30;
     private IBoulderDashModel boulderDashModel;
