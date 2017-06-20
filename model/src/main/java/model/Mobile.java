@@ -175,4 +175,14 @@ public class Mobile implements IMobile {
     public boolean hit() {
         return false;
     }
+
+    @Override
+    public boolean isEnemy() {
+        return false;
+    }
+
+    @Override
+    public boolean isObject() {
+        return false;
+    }
 }
