@@ -18,33 +18,36 @@ public class EventPerformer implements IEventPerformer {
     }
 
     @Override
-    public void eventPerform (final KeyEvent keyCode) {
-        final IUserOrder userOrder = this.keyCodeToUserOrder (keyCode.getKeyCode());
+    public void eventPerform (final KeyEvent keyCode) throws Exception {
+        final String userOrder = this.keyCodeToUserOrder (keyCode.getKeyCode());
         if (userOrder != null){
             this.orderPerformer.orderPerform(userOrder);
         }
     }
 
-    private IUserOrder keyCodeToUserOrder (final int keyCode) {
-        IUserOrder userOrder;
+    private String keyCodeToUserOrder (final int keyCode) {
+        String userOrder;
         switch (keyCode){
             case KeyEvent.VK_UP:
-                userOrder = new UserOrder (Order.UP);
+                userOrder = "UP";
                 break;
             case KeyEvent.VK_DOWN:
-                userOrder = new UserOrder (Order.DOWN);
+                userOrder = "DOWN";
                 break;
             case KeyEvent.VK_RIGHT:
-                userOrder = new UserOrder (Order.RIGHT);
+                userOrder = "RIGHT";
                 break;
             case KeyEvent.VK_LEFT:
-                userOrder = new UserOrder (Order.LEFT);
+                userOrder = "LEFT";
                 break;
-            case KeyEvent.VK_A
-                userOrder = new UserOrder (Order.DIG);
+            case KeyEvent.VK_W :
+                userOrder = "A";
                 break;
-            case KeyEvent.VK_B:
-                userOrder = new UserOrder (Order.PICKUP);
+            case KeyEvent.VK_X :
+                userOrder = "B";
+                break;
+            case KeyEvent.VK_SPACE:
+                userOrder = "START";
                 break;
             default:
                 userOrder = null;
