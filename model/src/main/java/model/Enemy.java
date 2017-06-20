@@ -7,8 +7,8 @@ public class Enemy extends Characters {
     private boolean doDropDiamonds ;
     private boolean clockWiseMove ;
 
-    public Enemy(Direction direction, Position position, Dimension dimension, int speed, int levelType , String enemyType) {
-        super(direction, position, dimension, speed, "/Sprites/type_"+ levelType +"/"+ enemyType +".png");
+    public Enemy(Direction direction, Position position, Dimension dimension, int levelType , String enemyType) {
+        super(direction, position, dimension, "/Sprites/type_"+ levelType +"/"+ enemyType +".png");
 
         switch (enemyType) {
             case "Enemy_1" :

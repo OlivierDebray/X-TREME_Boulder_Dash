@@ -5,7 +5,7 @@ package model;
  */
 public class Characters extends Mobile {
 
-    public Characters(Direction direction, Position position, Dimension dimension, int speed, String image) {
+    public Characters(Direction direction, Position position, Dimension dimension, String image) {
         super(direction, position, dimension, image);
     }
 
