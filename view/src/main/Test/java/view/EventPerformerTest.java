@@ -9,11 +9,12 @@ import org.junit.jupiter.api.Test;
  */
 
 public class EventPerformerTest {
-    @org.junit.Test
+
+    @Test
     public void eventPerform() throws Exception {
     }
 
-    @org.junit.Test
+    @Test
     public void keyCodeToUserOrder() throws Exception {
     }
 }

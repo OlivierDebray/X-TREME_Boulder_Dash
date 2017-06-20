@@ -15,10 +15,10 @@ import java.awt.image.ImageObserver;
 public class GraphicsBuilder implements IGraphicsBuilder {
 
     private BufferedImage emptyMap;
-    private IBoulderDashModel boulderDashModel ;
+    private IBoulderDashModel boulderDashModel;
 
     public GraphicsBuilder (IBoulderDashModel boulderDashModel) {
-        this.boulderDashModel = boulderDashModel ;
+        this.boulderDashModel = boulderDashModel;
         this.buildEmptyMap();
     }
 
