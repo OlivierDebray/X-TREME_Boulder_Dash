@@ -24,4 +24,6 @@ public interface IMobile {
     void placeInArea(IArea area) ;
     void setBoulderDashModel(IBoulderDashModel boulderDashModel) ;
     boolean hit () ;
+    boolean isEnemy () ;
+    boolean isObject () ;
 }
