@@ -49,4 +49,9 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
     public void setMobilesHavesMoved() {
 
     }
+
+    @Override
+    public IMobile getPlayer() {
+        return null;
+    }
 }

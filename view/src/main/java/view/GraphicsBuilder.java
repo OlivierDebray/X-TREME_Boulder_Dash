@@ -15,33 +15,39 @@ import java.awt.image.ImageObserver;
 public class GraphicsBuilder implements IGraphicsBuilder {
 
     private BufferedImage emptyMap;
-    private IBoulderDashModel boulderDashModel ;
+    private IBoulderDashModel boulderDashModel;
 
     public GraphicsBuilder (IBoulderDashModel boulderDashModel) {
-        this.boulderDashModel = boulderDashModel ;
+        this.boulderDashModel = boulderDashModel;
         this.buildEmptyMap();
     }
 
-    public void buildEmptyMap() {
-
-    }
-
-    public void drawMobile (IMobile mobile, Graphics graphics, ImageObserver observer){
-
-    }
-
     @Override
-    public void applyModelToGraphic() {
+    public void applyModelToGraphic(Graphics graphics, ImageObserver observer) {
+        graphics.drawImage(this.emptyMap , 0, 0, observer);
 
+        for (final IMobile mobile : this.boulderDashModel.getMobiles()) {
+            this.drawMobile(mobile, graphics, observer);
+        }
     }
 
     @Override
     public int getGlobalWidth() {
-        return 0 ;
+        return this.boulderDashModel.getArea().getWidth() ;
     }
 
     @Override
     public int getGlobalHeight() {
-        return 0 ;
+        return this.boulderDashModel.getArea().getHeight() ;
+    }
+
+    public void buildEmptyMap() {
+        this.emptyMap = new BufferedImage(this.boulderDashModel.getArea().getWidth(), this.boulderDashModel.getArea().getHeight(), BufferedImage.TYPE_INT_RGB);
+        final Graphics2D graphics = (Graphics2D) this.emptyMap.getGraphics();
+        graphics.drawImage(this.boulderDashModel.getArea().getImage(), 0, 0, this.boulderDashModel.getArea().getWidth(), this.boulderDashModel.getArea().getHeight(), null);
+    }
+
+    public void drawMobile (IMobile mobile, Graphics graphics, ImageObserver observer){
+
     }
 }
