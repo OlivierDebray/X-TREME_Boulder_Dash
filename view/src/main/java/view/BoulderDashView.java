@@ -4,6 +4,7 @@ import contract.IBoulderDashModel;
 import contract.IOrderPerformer;
 import contract.IViewSystem;
 
+import javax.swing.*;
 import java.util.Observable;
 
 /**
@@ -20,20 +21,21 @@ public class BoulderDashView implements IViewSystem, Runnable {
         this.observable = observable ;
         this.eventPerformer = new EventPerformer(orderPerformer) ;
         this.graphicsBuilder = new GraphicsBuilder(boulderDashModel) ;
+        SwingUtilities.invokeLater(this);
     }
 
     @Override
     public void run() {
-
+        this.gameFrame = new GameFrame("X-TREME BoulderDash !", this.eventPerformer, this.graphicsBuilder, this.observable);
     }
 
     @Override
-    public void displayMessage(String message) {
-
+    public void displayMessage(final String message) {
+        JOptionPane.showMessageDialog(null, message);
     }
 
     @Override
     public void closeAll() {
-
+        this.gameFrame.dispose();
     }
 }

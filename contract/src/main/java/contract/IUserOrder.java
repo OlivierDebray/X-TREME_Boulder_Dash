@@ -6,5 +6,6 @@ package contract;
  */
 
 public interface IUserOrder {
+    void setOrder (String order) ;
     String getOrder () ;
 }

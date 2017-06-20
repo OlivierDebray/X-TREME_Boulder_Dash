@@ -29,7 +29,7 @@ public class BoulderDashControllerTest {
         BoulderDashController boulderDashController = new BoulderDashController(boulderDashModel) ;
 
         try {
-            boulderDashController.orderPerform(new UserOrder(Order.UP));
+            boulderDashController.orderPerform("UP");
             fail("Should throw the direction") ;
         }
         catch (final Exception e) {
