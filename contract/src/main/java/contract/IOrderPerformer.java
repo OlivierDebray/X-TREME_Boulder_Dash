@@ -6,5 +6,5 @@ package contract;
  */
 
 public interface IOrderPerformer {
-    void orderPerform (IUserOrder userOrder) ;
+    void orderPerform (IUserOrder userOrder) throws Exception;
 }

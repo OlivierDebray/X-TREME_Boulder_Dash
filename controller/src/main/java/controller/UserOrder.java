@@ -1,6 +1,6 @@
 package controller;
 
-import contract.IUserOrder;
+        import contract.IUserOrder;
 
 /**
  * Created by Vincent on 16/06/2017.
@@ -9,10 +9,11 @@ import contract.IUserOrder;
 public class UserOrder implements IUserOrder {
     private Order order ;
 
-    public void UserOrder (Order order) {
+    public UserOrder (Order order) {
+        this.order = order ;
     }
 
     public String getOrder(){
-        return null;
+        return this.order.toString();
     }
 }
