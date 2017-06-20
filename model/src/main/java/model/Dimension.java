@@ -8,9 +8,9 @@ public class Dimension {
     private int width;
     private int height;
 
-    public Dimension (final int width , final int height) {
-        this.setWidth(width);
-        this.setHeight(height);
+    public Dimension (int width ,int height) {
+        this.width = width;
+        this.height = height;
     }
 
     public Dimension(final Dimension dimension){

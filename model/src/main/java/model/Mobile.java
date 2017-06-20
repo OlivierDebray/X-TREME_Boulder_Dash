@@ -12,14 +12,13 @@ import java.awt.*;
  */
 
 public class Mobile implements IMobile {
-    private int speed;
     private Image image[];
     private Position position;
     private Dimension dimension;
     private Direction direction;
     private BoulderDashModel boulderDashModel;
 
-    public Mobile(Direction direction, Position position, final Dimension dimension, final int speed, final String image){
+    public Mobile(Direction direction, Position position, final Dimension dimension, final String image){
 
     }
 
@@ -50,12 +49,35 @@ public class Mobile implements IMobile {
 
     @Override
     public String getDirection() {
-        return null;
+        return this.direction.toString();
     }
 
     @Override
     public void setDirection(String direction) {
+        switch (direction){
+            case "UP":
+                this.direction = Direction.UP;
+                break;
 
+            case "DOWN":
+                this.direction = Direction.DOWN;
+                break;
+
+            case "RIGHT":
+                this.direction = Direction.RIGHT;
+                break;
+
+            case "LEFT":
+                this.direction = Direction.LEFT;
+                break;
+
+            case "NONE":
+                this.direction = Direction.NONE;
+                break;
+
+            default:
+                this.direction = Direction.NONE;
+        }
     }
 
     @Override
@@ -95,11 +117,6 @@ public class Mobile implements IMobile {
 
     @Override
     public int getHeight() {
-        return 0;
-    }
-
-    @Override
-    public int getSpeed() {
         return 0;
     }
 
