@@ -25,7 +25,7 @@ public class EventPerformer implements IEventPerformer {
         }
     }
 
-    private String keyCodeToUserOrder (final int keyCode) {
+    public String keyCodeToUserOrder (final int keyCode) {
         String userOrder;
         switch (keyCode){
             case KeyEvent.VK_UP:

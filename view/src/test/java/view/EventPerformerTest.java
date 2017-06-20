@@ -1,7 +1,12 @@
 package view;
 
 
+import contract.IOrderPerformer;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
+
+import java.awt.event.KeyEvent;
 
 
 /**
@@ -9,6 +14,13 @@ import org.junit.jupiter.api.Test;
  */
 
 public class EventPerformerTest {
+    private IOrderPerformer orderPerformer ;
+    private EventPerformer eventPerformer ;
+
+    @Before
+    public void setUp () {
+        eventPerformer = new EventPerformer(orderPerformer) ;
+    }
 
     @Test
     public void eventPerform() throws Exception {
