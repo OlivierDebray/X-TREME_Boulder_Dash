@@ -3,7 +3,6 @@ package controller;
 import contract.IBoulderDashModel;
 import contract.IMobile;
 import contract.IOrderPerformer;
-import contract.IUserOrder;
 import contract.IViewSystem;
 
 import java.util.ArrayList;
@@ -23,7 +22,8 @@ public class BoulderDashController implements IOrderPerformer {
         this.boulderDashModel = boulderDashModel ;
     }
 
-    public void orderPerform (IUserOrder userOrder) throws Exception {
+    public void orderPerform (String stringUserOrder) throws Exception {
+        UserOrder userOrder = new UserOrder(stringUserOrder) ;
         if (userOrder != null) {
             final IMobile hero = this.boulderDashModel.getPlayer() ;
             if (hero != null) {
@@ -39,6 +39,15 @@ public class BoulderDashController implements IOrderPerformer {
                         direction = userOrder.getOrder();
                         break ;
                     case "LEFT":
+                        direction = userOrder.getOrder();
+                        break ;
+                    case "A":
+                        direction = userOrder.getOrder();
+                        break ;
+                    case "B":
+                        direction = userOrder.getOrder();
+                        break ;
+                    case "START":
                         direction = userOrder.getOrder();
                         break ;
                     default:

@@ -38,7 +38,11 @@ public class GameFrame extends JFrame implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent keyEvent) {
-        this.eventPerformer.eventPerform(keyEvent);
+        try {
+            this.eventPerformer.eventPerform(keyEvent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

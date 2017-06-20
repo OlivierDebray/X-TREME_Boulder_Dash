@@ -3,6 +3,7 @@ package view;
 import contract.IGraphicsBuilder;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -20,7 +21,12 @@ public class GamePanel extends JPanel implements Observer {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(final Observable observable, final Object object) {
+        this.repaint();
+    }
 
+    @Override
+    protected void paintComponent(final Graphics graphics) {
+        this.graphicsBuilder.applyModelToGraphic(graphics, this);
     }
 }

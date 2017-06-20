@@ -23,7 +23,7 @@ public class UserOrderTest {
 
     @Test
     public void getOrder() throws Exception {
-        UserOrder userOrder = new UserOrder(Order.UP) ;
+        UserOrder userOrder = new UserOrder("UP") ;
         String expected = "UP" ;
         String result = userOrder.getOrder() ;
         Assert.assertEquals(expected , result);

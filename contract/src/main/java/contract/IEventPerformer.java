@@ -8,5 +8,5 @@ import java.awt.event.KeyEvent;
  */
 
 public interface IEventPerformer {
-    void eventPerform(KeyEvent keyCode) ;
+    void eventPerform(KeyEvent keyCode) throws Exception;
 }
