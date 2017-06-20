@@ -1,8 +1,8 @@
 package view;
 
-import contract.IEventPerformer;
 import contract.IGraphicsBuilder;
 
+import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -11,9 +11,12 @@ import java.util.Observer;
  *         Made on 16/06/2017
  */
 
-public class GamePanel implements Observer {
-    void GamePanel (String title , IEventPerformer eventPerformer , IGraphicsBuilder graphicsBuilder , Observable observable) {
+public class GamePanel extends JPanel implements Observer {
+    //private static final long serialVersionUID = 3987064896591403626L;
+    private IGraphicsBuilder graphicsBuilder ;
 
+    public GamePanel (IGraphicsBuilder graphicsBuilder) {
+        this.graphicsBuilder = graphicsBuilder ;
     }
 
     @Override
