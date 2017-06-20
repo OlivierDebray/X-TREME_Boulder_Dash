@@ -8,11 +8,11 @@ import java.util.ArrayList;
  */
 
 public interface IBoulderDashModel {
-    void buildArea (int width , int height) ;
+    void buildArea (int width , int height , int levelType) ;
     IArea getArea () ;
     void addMobile (IMobile mobile) ;
     void removeMobile (IMobile mobile) ;
     ArrayList<IMobile> getMobiles () ;
     void setMobilesHavesMoved() ;
-    IMobile getPlayer () ;
+    IMobile getPlayer () throws Exception;
 }

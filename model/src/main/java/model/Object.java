@@ -6,7 +6,7 @@ package model;
  */
 public class Object extends Mobile {
 
-    public Object(Direction direction, Position position, Dimension dimension, int speed, String image) {
+    public Object(Direction direction, Position position, Dimension dimension, String image) {
         super(direction, position, dimension, image);
     }
 }
