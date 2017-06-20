@@ -2,6 +2,7 @@ package view;
 
 import contract.IEventPerformer;
 import contract.IOrderPerformer;
+import contract.IUserOrder;
 
 import java.awt.event.KeyEvent;
 
@@ -18,9 +19,9 @@ public class EventPerformer implements IEventPerformer {
 
     @Override
     public void eventPerform (final KeyEvent keyCode) {
-        final IUserOrder = this.keyCodeToUserOrder (keyCode.getKeyCode());
+        final IUserOrder userOrder = this.keyCodeToUserOrder (keyCode.getKeyCode());
         if (userOrder != null){
-            this.orderPerformer.orderPerform (userOrder);
+            this.orderPerformer.orderPerform(userOrder);
         }
     }
 
@@ -28,25 +29,25 @@ public class EventPerformer implements IEventPerformer {
         IUserOrder userOrder;
         switch (keyCode){
             case KeyEvent.VK_UP:
-                userOrder = new UserOrder (0, Order.UP);
+                userOrder = new UserOrder (Order.UP);
                 break;
             case KeyEvent.VK_DOWN:
-                userOrder = new UserOrder (0, Order.DOWN);
+                userOrder = new UserOrder (Order.DOWN);
                 break;
             case KeyEvent.VK_RIGHT:
-                userOrder = new UserOrder (0, Order.RIGHT);
+                userOrder = new UserOrder (Order.RIGHT);
                 break;
             case KeyEvent.VK_LEFT:
-                userOrder = new UserOrder (0, Order.LEFT);
+                userOrder = new UserOrder (Order.LEFT);
                 break;
             case KeyEvent.VK_A
-                userOrder = new UserOrder (0, Order.DIG);
+                userOrder = new UserOrder (Order.DIG);
                 break;
             case KeyEvent.VK_B:
-                userOrder = new UserOrder (0, Order.PICKUP);
+                userOrder = new UserOrder (Order.PICKUP);
                 break;
-
-            default: userOrder = null;
+            default:
+                userOrder = null;
         }
         return userOrder;
     }
