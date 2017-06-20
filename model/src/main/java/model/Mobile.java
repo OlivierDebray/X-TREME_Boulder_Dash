@@ -5,20 +5,51 @@ import contract.IArea;
 import contract.IBoulderDashModel;
 import contract.IMobile;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Théo on 14/06/2017.
  */
 
 public class Mobile implements IMobile {
-    private Image image[];
+    private Image images[];
     private Position position;
     private Dimension dimension;
     private Direction direction;
-    private BoulderDashModel boulderDashModel;
+    private IBoulderDashModel boulderDashModel;
 
     public Mobile(Direction direction, Position position, final Dimension dimension, final String image){
+
+    }
+
+    @Override
+    public void move() {
+        switch (this.direction){
+            case UP:
+                this.moveUp();
+                break;
+
+            case DOWN:
+                this.moveDown();
+                break;
+
+            case LEFT:
+                this.moveLeft();
+                break;
+
+            case RIGHT:
+                this.moveRight();
+                break;
+
+            case NONE:
+                break;
+
+            default:
+                break;
+        }
 
     }
 
@@ -38,13 +69,13 @@ public class Mobile implements IMobile {
 
     }
 
-    public IBoulderDashModel getBoulderDashModel(){
-
-        return null;
-    }
-
-    public void buildAllImages(final String imageName){
-
+    public void buildAllImages(final String imageName) throws IOException{
+        this.images = new Image[5];
+        this.images[Direction.UP.ordinal()] = ImageIO.read(new File("ProjetJava/Sprites/Hero/"+ imageName +"_UP.png"));
+        this.images[Direction.DOWN.ordinal()] = ImageIO.read(new File("ProjetJava/Sprites/Hero/"+ imageName +"_DOWN.png"));
+        this.images[Direction.RIGHT.ordinal()] = ImageIO.read(new File("ProjetJava/Sprites/Hero/"+ imageName +"_RIGHT.png"));
+        this.images[Direction.LEFT.ordinal()] = ImageIO.read(new File("ProjetJava/Sprites/Hero/"+ imageName +"_LEFT.png"));
+        this.images[Direction.DOWN.ordinal()] = ImageIO.read(new File("ProjetJava/Sprites/Hero/"+ imageName +"_DIE.png"));
     }
 
     @Override
@@ -122,12 +153,7 @@ public class Mobile implements IMobile {
 
     @Override
     public Image getImage() {
-        return null;
-    }
-
-    @Override
-    public void move() {
-
+        return this.images[this.direction.ordinal()];
     }
 
     @Override
@@ -135,8 +161,13 @@ public class Mobile implements IMobile {
 
     }
 
+    public IBoulderDashModel getBoulderDashModel(){
+        return this.boulderDashModel;
+    }
+
     @Override
     public void setBoulderDashModel(IBoulderDashModel boulderDashModel) {
+        this.boulderDashModel = boulderDashModel;
 
     }
 

@@ -113,10 +113,12 @@ public class MobileTest {
 
     @Test
     public void setBoulderDashModel() throws Exception {
+
     }
 
     @Test
     public void hit() throws Exception {
+        Assert.assertFalse(mobile.hit());
     }
 
 }
