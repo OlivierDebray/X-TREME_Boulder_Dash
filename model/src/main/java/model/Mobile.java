@@ -31,22 +31,17 @@ public class Mobile implements IMobile {
             case UP:
                 this.moveUp();
                 break;
-
             case DOWN:
                 this.moveDown();
                 break;
-
             case LEFT:
                 this.moveLeft();
                 break;
-
             case RIGHT:
                 this.moveRight();
                 break;
-
             case NONE:
                 break;
-
             default:
                 break;
         }
@@ -54,19 +49,19 @@ public class Mobile implements IMobile {
     }
 
     public void moveUp(){
-
+        this.position.setY(this.position.getY());
     }
 
     public void moveDown(){
-
+        this.position.setY(this.position.getY());
     }
 
     public void moveRight(){
-
+        this.position.setX(this.position.getX());
     }
 
     public void moveLeft(){
-
+        this.position.setX(this.position.getX());
     }
 
     public void buildAllImages(final String imageName) throws IOException{
@@ -89,23 +84,18 @@ public class Mobile implements IMobile {
             case "UP":
                 this.direction = Direction.UP;
                 break;
-
             case "DOWN":
                 this.direction = Direction.DOWN;
                 break;
-
             case "RIGHT":
                 this.direction = Direction.RIGHT;
                 break;
-
             case "LEFT":
                 this.direction = Direction.LEFT;
                 break;
-
             case "NONE":
                 this.direction = Direction.NONE;
                 break;
-
             default:
                 this.direction = Direction.NONE;
         }
@@ -113,12 +103,12 @@ public class Mobile implements IMobile {
 
     @Override
     public int getPositionX() {
-        return 0;
+        return this.position.getX();
     }
 
     @Override
     public int getPositionY() {
-        return 0;
+        return this.position.getY();
     }
 
     @Override
@@ -133,22 +123,39 @@ public class Mobile implements IMobile {
 
     @Override
     public int getDimensionWidth() {
-        return 0;
+        return this.dimension.getWidth();
     }
 
     @Override
     public int getDimensionHeight() {
-        return 0;
+        return this.dimension.getHeight();
     }
 
     @Override
     public int getWidth() {
-        return 0;
+        switch (this.direction) {
+            case NONE:
+            case UP:
+            case DOWN:
+                return this.getDimensionHeight();
+            case RIGHT:
+            case LEFT:
+            default:
+                return this.getDimensionWidth();
+        }
     }
 
     @Override
     public int getHeight() {
-        return 0;
+        switch (this.direction) {
+            case UP:
+            case DOWN:
+                return this.getDimensionWidth();
+            case RIGHT:
+            case LEFT:
+            default:
+                return this.getDimensionHeight();
+        }
     }
 
     @Override
@@ -158,7 +165,8 @@ public class Mobile implements IMobile {
 
     @Override
     public void placeInArea(IArea area) {
-
+        this.position.setXmax(area.getDimensionWidth());
+        this.position.setYmax(area.getDimensionHeight());
     }
 
     public IBoulderDashModel getBoulderDashModel(){
@@ -168,7 +176,6 @@ public class Mobile implements IMobile {
     @Override
     public void setBoulderDashModel(IBoulderDashModel boulderDashModel) {
         this.boulderDashModel = boulderDashModel;
-
     }
 
     @Override

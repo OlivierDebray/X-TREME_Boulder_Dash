@@ -1,5 +1,6 @@
 package model;
 
+import contract.IBoulderDashModel;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +18,7 @@ public class MobileTest {
     Dimension dimension;
     Direction direction;
     String image;
+    IBoulderDashModel boulderDashModel;
 
     @Before
     public void setUp(){
@@ -26,23 +28,49 @@ public class MobileTest {
     }
     @Test
     public void moveUp() throws Exception {
-
+        int expectedY = 2;
+        this.position.setY(this.position.getY());
+        int y = position.getY();
+        assertEquals(expectedY, y);
     }
 
     @Test
     public void moveDown() throws Exception {
+        int expectedY = 2;
+        this.position.setY(this.position.getY());
+        int y = position.getY();
+        assertEquals(expectedY, y);
     }
 
     @Test
     public void moveRight() throws Exception {
+        int expectedX = 1;
+        this.position.setX(this.position.getX());
+        int x = position.getX();
+        assertEquals(expectedX, x);
     }
 
     @Test
     public void moveLeft() throws Exception {
+        int expectedX = 1;
+        this.position.setX(this.position.getX());
+        int x = position.getX();
+        assertEquals(expectedX, x);
     }
 
     @Test
+    public void setBoulderDashModel() throws Exception {
+        IBoulderDashModel expectedBoulderModel = boulderDashModel;
+        mobile.setBoulderDashModel(boulderDashModel);
+        IBoulderDashModel boulderModel = mobile.getBoulderDashModel();
+        assertEquals(expectedBoulderModel,boulderModel);
+    }
+
+
+    @Test
     public void getBoulderDashModel() throws Exception {
+        IBoulderDashModel expectedBoulderModel = boulderDashModel;
+        assertEquals(expectedBoulderModel, mobile.getBoulderDashModel());
     }
 
     @Test
@@ -109,11 +137,6 @@ public class MobileTest {
 
     @Test
     public void placeInArea() throws Exception {
-    }
-
-    @Test
-    public void setBoulderDashModel() throws Exception {
-
     }
 
     @Test
