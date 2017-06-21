@@ -19,7 +19,7 @@ public abstract class QueryLevel extends AbstractDAO{
         Map map = null;
         callStatement.setInt(1, idmap);
         if (callStatement.execute()){
-            ResultSet result
+            ResultSet result = callStatement.getResultSet();
         }
 
     }

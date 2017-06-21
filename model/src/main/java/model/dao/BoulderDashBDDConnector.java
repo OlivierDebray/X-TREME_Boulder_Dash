@@ -24,7 +24,7 @@ final class BoulderDashBDDConnector {
     private static String                  password = "";
 
     /** The url. */
-    private static String                  url      = "jdbc:mysql://localhost/phpmyadmin/db_structure.php?server=1&db=bdd_proj&token=152010de69cbe2859a6a0d14ae8d5d04";
+    private static String                  url      = "jdbc:mysql://localhost/phpmyadmin/db_structure.php?server=1&db=boulder_dash&token=5e5ad599d9e0f8ffe99821de93ba0f2f";
 
     /** The connection. */
     private Connection                     connection;
