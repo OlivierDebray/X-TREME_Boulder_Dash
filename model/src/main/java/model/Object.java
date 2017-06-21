@@ -7,7 +7,7 @@ package model;
 public class Object extends Mobile {
 
     public Object(Direction direction, Position position, Dimension dimension, String image , String name , int levelType) {
-        super(direction, position, dimension, image, levelType);
+        super(direction, position, dimension, name, levelType);
     }
 
     @Override

@@ -8,10 +8,12 @@ package model;
 class Level {
     private BoulderDashModel boulderDashModel ;
     private int levelType ;
-    private char[][] levelText = new char[30][30] ;
+    private char[][] levelText ;
 
     Level(int levelType , int levelID) {
         this.levelType = levelType ;
+        this.levelText = new char[30][30] ;
+        this.levelText[5][5] = 'D' ;
     }
 
     public void buildLevel () {

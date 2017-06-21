@@ -48,6 +48,10 @@ public class GraphicsBuilder implements IGraphicsBuilder {
     }
 
     public void drawMobile (IMobile mobile, Graphics graphics, ImageObserver observer){
+        final BufferedImage imageMobile = new BufferedImage(mobile.getWidth(), mobile.getHeight(), Transparency.TRANSLUCENT);
+        final Graphics graphicsMobile = imageMobile.getGraphics();
 
+        graphicsMobile.drawImage(mobile.getImage(), 0, 0, mobile.getWidth(), mobile.getHeight(), observer);
+        graphics.drawImage(imageMobile, mobile.getPositionX(), mobile.getPositionY(), observer);
     }
 }

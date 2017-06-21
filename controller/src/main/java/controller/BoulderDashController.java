@@ -55,7 +55,6 @@ public class BoulderDashController implements IOrderPerformer {
                         break ;
                 }
                 hero.setDirection(direction);
-                throw new Exception(direction) ;
             }
         }
     }
@@ -122,11 +121,9 @@ public class BoulderDashController implements IOrderPerformer {
     }
 
     private boolean isEntityOnMobile(IMobile mobile, IMobile entity) {
-        if (((entity.getPositionX() / entity.getWidth()) >= (mobile.getPositionX() / entity.getWidth()))
-                && ((entity.getPositionX() / entity.getWidth()) <= ((mobile.getPositionX() + mobile.getWidth()) / entity.getWidth()))) {
-            if (((entity.getPositionY() / entity.getHeight()) >= (mobile.getPositionY() / entity.getHeight()))
-                    && ((entity.getPositionY() / entity.getHeight()) <= ((mobile.getPositionY() + mobile.getHeight()) / entity.getHeight()))) {
-                return true;
+        if ((entity.getPositionY() == mobile.getPositionY()) && (entity.getPositionX() == mobile.getPositionX())) {
+            if (mobile.getClass() != entity.getClass()) {
+                return true ;
             }
         }
         return false;
