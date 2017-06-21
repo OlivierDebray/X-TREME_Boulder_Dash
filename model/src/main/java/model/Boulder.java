@@ -7,6 +7,6 @@ public class Boulder extends Object {
     public static String IMAGE = "Boulder.png" ;
 
     public Boulder(Direction direction, Position position, Dimension dimension, int levelType , String name) {
-        super(direction, position, dimension, "/Sprites/type_"+ levelType +"/"+ IMAGE , name);
+        super(direction, position, dimension, "/Sprites/type_"+ levelType +"/"+ IMAGE , name , levelType);
     }
 }

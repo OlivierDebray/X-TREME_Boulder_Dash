@@ -32,12 +32,12 @@ public class Map implements IArea {
 
     @Override
     public int getDimensionWidth() {
-        return this.getDimensionWidth();
+        return this.dimension.getWidth();
     }
 
     @Override
     public int getDimensionHeight() {
-        return this.getDimensionHeight();
+        return this.dimension.getHeight();
     }
 
     @Override

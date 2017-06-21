@@ -21,12 +21,12 @@ public class Mobile implements IMobile {
     private Direction direction;
     private IBoulderDashModel boulderDashModel;
 
-    public Mobile(Direction direction, Position position, final Dimension dimension, final String image , final String mobileName , final String levelType){
+    public Mobile(Direction direction, Position position, final Dimension dimension, final String mobileName , final int levelType){
         this.direction = direction;
         this.position = position;
         this.dimension = dimension;
         try {
-            this.buildAllImages(image , mobileName , levelType);
+            this.buildAllImages(mobileName , levelType);
         } catch (final IOException e) {
             e.printStackTrace();
         }
@@ -70,30 +70,30 @@ public class Mobile implements IMobile {
         this.position.setX(this.position.getX() - 16);
     }
 
-    public void buildAllImages(final String imageName , final String mobileName , final String levelType) throws IOException{
+    public void buildAllImages(final String mobileName , final int levelType) throws IOException{
         switch (mobileName) {
             case "hero" :
                 this.images = new Image[5];
-                this.images[Direction.UP.ordinal()] = ImageIO.read(new File("/Sprites/Hero/"+ imageName +"_UP.png"));
-                this.images[Direction.DOWN.ordinal()] = ImageIO.read(new File("/Sprites/Hero/"+ imageName +"_DOWN.png"));
-                this.images[Direction.RIGHT.ordinal()] = ImageIO.read(new File("/Sprites/Hero/"+ imageName +"_RIGHT.png"));
-                this.images[Direction.LEFT.ordinal()] = ImageIO.read(new File("/Sprites/Hero/"+ imageName +"_LEFT.png"));
-                this.images[Direction.NONE.ordinal()] = ImageIO.read(new File("/Sprites/Hero/"+ imageName +"_NONE.png"));
+                this.images[Direction.UP.ordinal()] = ImageIO.read(new File("/Sprites/Hero/Up.png"));
+                this.images[Direction.DOWN.ordinal()] = ImageIO.read(new File("/Sprites/Hero/Down.png"));
+                this.images[Direction.RIGHT.ordinal()] = ImageIO.read(new File("/Sprites/Hero/Right.png"));
+                this.images[Direction.LEFT.ordinal()] = ImageIO.read(new File("/Sprites/Hero/Left.png"));
+                this.images[Direction.NONE.ordinal()] = ImageIO.read(new File("/Sprites/Hero/None.png"));
             case "enemy_1" :
                 this.images = new Image[1];
-                this.images[1] = ImageIO.read(new File("/Sprites/" + levelType + "/Enemy_1.png")) ;
+                this.images[1] = ImageIO.read(new File("/Sprites/type_" + levelType + "/Enemy_1.png")) ;
             case "enemy_2" :
                 this.images = new Image[1];
-                this.images[1] = ImageIO.read(new File("/Sprites/" + levelType + "/Enemy_2.png")) ;
+                this.images[1] = ImageIO.read(new File("/Sprites/type_" + levelType + "/Enemy_2.png")) ;
             case "amoeba" :
                 this.images = new Image[1];
-                this.images[1] = ImageIO.read(new File("/Sprites/" + levelType + "/Amoeba.png")) ;
+                this.images[1] = ImageIO.read(new File("/Sprites/type_" + levelType + "/Amoeba.png")) ;
             case "boulder" :
                 this.images = new Image[1];
-                this.images[1] = ImageIO.read(new File("/Sprites/" + levelType + "/Boulder.png")) ;
+                this.images[1] = ImageIO.read(new File("/Sprites/type_" + levelType + "/Boulder.png")) ;
             case "diamond" :
                 this.images = new Image[1];
-                this.images[1] = ImageIO.read(new File("/Sprites/" + levelType + "/Diamond.png")) ;
+                this.images[1] = ImageIO.read(new File("/Sprites/type_" + levelType + "/Diamond.png")) ;
         }
     }
 

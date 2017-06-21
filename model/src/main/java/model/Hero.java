@@ -5,7 +5,7 @@ package model;
  */
 public class Hero extends Characters{
 
-    public Hero(Direction direction, Position position, Dimension dimension, String image , String name) {
-        super(direction, position, dimension, image , name);
+    public Hero(Direction direction, Position position, Dimension dimension, int levelType, String name) {
+        super(direction, position, dimension, name , levelType);
     }
 }

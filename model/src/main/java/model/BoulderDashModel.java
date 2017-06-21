@@ -13,18 +13,22 @@ import java.util.Observable;
 
 public class BoulderDashModel extends Observable implements IBoulderDashModel {
     private Map map;
+    private Level level ;
     private ArrayList<IMobile> mobiles;
     private ArrayList<Motionless> motionless;
     private int levelType ;
 
-    public BoulderDashModel(int levelType){
+    public BoulderDashModel(int levelType , int levelID){
         this.mobiles = new ArrayList<>() ;
+        this.motionless = new ArrayList<>() ;
         this.levelType = levelType ;
+        this.level = new Level(levelType , levelID) ;
+        this.level.setBoulderDashModel(this);
     }
 
     @Override
-    public void buildArea(int width , int height , int levelType) {
-        this.map = new Map(width , height , levelType) ;
+    public void buildArea(int width , int height) {
+        this.map = new Map(width*16 , height*16 , this.levelType) ;
     }
 
     @Override
@@ -46,6 +50,19 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
     @Override
     public ArrayList<IMobile> getMobiles() {
         return this.mobiles ;
+    }
+
+    public void addMotionless (Motionless motionless) {
+        this.motionless.add(motionless) ;
+        motionless.setBoulderDashModel(this);
+    }
+
+    public void removeMotionless (Motionless motionless) {
+        this.motionless.remove(motionless) ;
+    }
+
+    public ArrayList<Motionless> getMotionless () {
+        return this.motionless ;
     }
 
     @Override
