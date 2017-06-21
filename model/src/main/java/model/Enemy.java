@@ -8,7 +8,7 @@ public class Enemy extends Characters {
     private boolean clockWiseMove ;
 
     public Enemy(Direction direction, Position position, Dimension dimension, int levelType , String enemyType) {
-        super(direction, position, dimension, "/Sprites/type_"+ levelType +"/"+ enemyType +".png");
+        super(direction, position, dimension, "/Sprites/type_"+ levelType +"/"+ enemyType +".png" , enemyType);
 
         switch (enemyType) {
             case "Enemy_1" :
@@ -21,5 +21,15 @@ public class Enemy extends Characters {
                 this.doDropDiamonds = true ;
                 this.clockWiseMove = true ;
         }
+    }
+
+    @Override
+    public boolean isEnemy() {
+        return true;
+    }
+
+    @Override
+    public boolean hit() {
+        return true;
     }
 }

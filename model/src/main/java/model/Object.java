@@ -6,7 +6,17 @@ package model;
  */
 public class Object extends Mobile {
 
-    public Object(Direction direction, Position position, Dimension dimension, String image) {
-        super(direction, position, dimension, image);
+    public Object(Direction direction, Position position, Dimension dimension, String image , String name) {
+        super(direction, position, dimension, image , name);
+    }
+
+    @Override
+    public boolean isObject() {
+        return true ;
+    }
+
+    @Override
+    public boolean hit() {
+        return true ;
     }
 }

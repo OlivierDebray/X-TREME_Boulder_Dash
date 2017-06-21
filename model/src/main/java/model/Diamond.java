@@ -6,7 +6,7 @@ package model;
 public class Diamond extends Object {
     public static String IMAGE = "Diamond.png" ;
 
-    public Diamond(Direction direction, Position position, Dimension dimension, int levelType) {
-        super(direction, position, dimension, "/Sprites/type_"+ levelType +"/"+ IMAGE);
+    public Diamond(Direction direction, Position position, Dimension dimension, int levelType , String name) {
+        super(direction, position, dimension, "/Sprites/type_"+ levelType +"/"+ IMAGE , name);
     }
 }

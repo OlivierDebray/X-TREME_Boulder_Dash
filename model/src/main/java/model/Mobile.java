@@ -21,8 +21,15 @@ public class Mobile implements IMobile {
     private Direction direction;
     private IBoulderDashModel boulderDashModel;
 
-    public Mobile(Direction direction, Position position, final Dimension dimension, final String image){
-
+    public Mobile(Direction direction, Position position, final Dimension dimension, final String image , final String mobileName , final String levelType){
+        this.direction = direction;
+        this.position = position;
+        this.dimension = dimension;
+        try {
+            this.buildAllImages(image , mobileName , levelType);
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -45,32 +52,49 @@ public class Mobile implements IMobile {
             default:
                 break;
         }
-
     }
 
     public void moveUp(){
-        this.position.setY(this.position.getY());
+        this.position.setY(this.position.getY() - 16);
     }
 
     public void moveDown(){
-        this.position.setY(this.position.getY());
+        this.position.setY(this.position.getY() + 16);
     }
 
     public void moveRight(){
-        this.position.setX(this.position.getX());
+        this.position.setX(this.position.getX() + 16);
     }
 
     public void moveLeft(){
-        this.position.setX(this.position.getX());
+        this.position.setX(this.position.getX() - 16);
     }
 
-    public void buildAllImages(final String imageName) throws IOException{
-        this.images = new Image[5];
-        this.images[Direction.UP.ordinal()] = ImageIO.read(new File("ProjetJava/Sprites/Hero/"+ imageName +"_UP.png"));
-        this.images[Direction.DOWN.ordinal()] = ImageIO.read(new File("ProjetJava/Sprites/Hero/"+ imageName +"_DOWN.png"));
-        this.images[Direction.RIGHT.ordinal()] = ImageIO.read(new File("ProjetJava/Sprites/Hero/"+ imageName +"_RIGHT.png"));
-        this.images[Direction.LEFT.ordinal()] = ImageIO.read(new File("ProjetJava/Sprites/Hero/"+ imageName +"_LEFT.png"));
-        this.images[Direction.DOWN.ordinal()] = ImageIO.read(new File("ProjetJava/Sprites/Hero/"+ imageName +"_DIE.png"));
+    public void buildAllImages(final String imageName , final String mobileName , final String levelType) throws IOException{
+        switch (mobileName) {
+            case "hero" :
+                this.images = new Image[5];
+                this.images[Direction.UP.ordinal()] = ImageIO.read(new File("/Sprites/Hero/"+ imageName +"_UP.png"));
+                this.images[Direction.DOWN.ordinal()] = ImageIO.read(new File("/Sprites/Hero/"+ imageName +"_DOWN.png"));
+                this.images[Direction.RIGHT.ordinal()] = ImageIO.read(new File("/Sprites/Hero/"+ imageName +"_RIGHT.png"));
+                this.images[Direction.LEFT.ordinal()] = ImageIO.read(new File("/Sprites/Hero/"+ imageName +"_LEFT.png"));
+                this.images[Direction.NONE.ordinal()] = ImageIO.read(new File("/Sprites/Hero/"+ imageName +"_NONE.png"));
+            case "enemy_1" :
+                this.images = new Image[1];
+                this.images[1] = ImageIO.read(new File("/Sprites/" + levelType + "/Enemy_1.png")) ;
+            case "enemy_2" :
+                this.images = new Image[1];
+                this.images[1] = ImageIO.read(new File("/Sprites/" + levelType + "/Enemy_2.png")) ;
+            case "amoeba" :
+                this.images = new Image[1];
+                this.images[1] = ImageIO.read(new File("/Sprites/" + levelType + "/Amoeba.png")) ;
+            case "boulder" :
+                this.images = new Image[1];
+                this.images[1] = ImageIO.read(new File("/Sprites/" + levelType + "/Boulder.png")) ;
+            case "diamond" :
+                this.images = new Image[1];
+                this.images[1] = ImageIO.read(new File("/Sprites/" + levelType + "/Diamond.png")) ;
+        }
     }
 
     @Override
