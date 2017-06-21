@@ -94,10 +94,13 @@ public class MobileTest {
 
     @Test
     public void getPositionX() throws Exception {
+        int expectedX = 1;
+        assertEquals(expectedX, this.position.getX());
     }
 
     @Test
     public void getPositionY() throws Exception {
+        int expectedY = 2;
     }
 
     @Test
@@ -118,17 +121,21 @@ public class MobileTest {
 
     @Test
     public void getWidth() throws Exception {
+        int expectedWidth = 10;
+        assertEquals(expectedWidth, this.dimension.getWidth());
     }
 
     @Test
     public void getHeight() throws Exception {
+        int expectedHeight = 10;
+        assertEquals(expectedHeight, this.dimension.getHeight());
     }
 
 
     @Test
     public void getImage() throws Exception {
         String ExpectedImg = "Image.png";
-        assertEquals(ExpectedImg, mobile.getImage());
+        Assert.assertEquals(ExpectedImg, this.mobile.getImage());
     }
 
     @Test
