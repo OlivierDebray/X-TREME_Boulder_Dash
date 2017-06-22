@@ -10,9 +10,8 @@ import java.sql.SQLException;
  */
 public abstract class QueryLevel extends AbstractDAO {
 
-    private static String sqlMapByID = "{call getMapById(?)}";
+    private static String sqlMapByID = "{call getMapByID(?)}";
 
-    private static int idmapColumnIndex = 1;
     private static int mapColumnIndex = 6;
 
     private String map;
