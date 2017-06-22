@@ -87,12 +87,12 @@ public class Motionless implements IMobile {
 
     @Override
     public int getWidth() {
-        return 0;
+        return this.getDimensionWidth();
     }
 
     @Override
     public int getHeight() {
-        return 0;
+        return this.getDimensionHeight();
     }
 
     @Override

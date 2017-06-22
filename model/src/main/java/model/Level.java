@@ -18,6 +18,9 @@ class Level {
         this.levelType = levelType ;
         this.levelText = new char[30][30] ;
         this.levelText[5][5] = 'X' ;
+        this.levelText[2][2] = 'H' ;
+        this.levelText[3][3] = 'O' ;
+        this.levelText[3][4] = 'O' ;
     }
 
     public void getLevel (int levelID) {

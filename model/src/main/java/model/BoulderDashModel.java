@@ -15,7 +15,7 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
     private Map map;
     private Level level ;
     private ArrayList<IMobile> mobiles;
-    private ArrayList<Motionless> motionless;
+    private ArrayList<IMobile> motionless;
     private int levelType ;
 
     public BoulderDashModel(int levelType , int levelID){
@@ -26,7 +26,7 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
 
         this.level = new Level(levelType , levelID) ;
         this.level.setBoulderDashModel(this);
-        this.level.getLevel(1);
+        //this.level.getLevel(1);
         this.level.buildLevel();
 
         this.addMobile(new Hero(Direction.NONE , new Position(0*16,0*16) , new Dimension(16,16) , 1 , "hero"));
@@ -58,16 +58,19 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
         return this.mobiles ;
     }
 
-    public void addMotionless (Motionless motionless) {
+    @Override
+    public void addMotionless (IMobile motionless) {
         this.motionless.add(motionless) ;
         motionless.setBoulderDashModel(this);
     }
 
-    public void removeMotionless (Motionless motionless) {
+    @Override
+    public void removeMotionless (IMobile motionless) {
         this.motionless.remove(motionless) ;
     }
 
-    public ArrayList<Motionless> getMotionless () {
+    @Override
+    public ArrayList<IMobile> getMotionless () {
         return this.motionless ;
     }
 
