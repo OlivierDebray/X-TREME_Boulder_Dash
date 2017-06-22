@@ -81,7 +81,6 @@ public class EventPerformer implements IEventPerformer {
         else {
             userOrder = "NONE" ;
         }
-        System.out.println(userOrder) ;
         return userOrder;
     }
 }

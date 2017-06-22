@@ -86,7 +86,7 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
     }
 
     @Override
-    public IMobile getPlayer() throws Exception {
+    public IMobile getPlayer() {
         return this.hero ;
     }
 }

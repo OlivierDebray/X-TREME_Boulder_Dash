@@ -21,7 +21,9 @@ class Level {
         this.levelText[5][5] = 'X' ;
         this.levelText[2][2] = 'H' ;
         this.levelText[3][3] = 'O' ;
-        this.levelText[3][4] = 'O' ;
+        this.levelText[4][4] = 'O' ;
+        this.levelText[0][15] = 'X' ;
+        this.levelText[0][18] = 'H' ;
     }
 
     public void getLevel (int levelID) {
@@ -35,6 +37,7 @@ class Level {
 
     public void buildLevel () {
         for (int y = 0 ; y < 30 ; y++) {
+            this.levelText[29][y] = 'O' ;
             for (int x = 0 ; x < 30 ; x++) {
                 switch (levelText[y][x]) {
                     case 'D' :
@@ -56,13 +59,13 @@ class Level {
                         this.boulderDashModel.addPlayer(new Hero(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16), levelType, "hero" ));
                         break ;
                     case 'O' :
-                        this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Dirt" , levelType));
+                        this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Dirt" , levelType , "dirt"));
                         break ;
                     case 'H' :
-                        this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Wall" , levelType));
+                        this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Wall" , levelType , "wall"));
                         break ;
                     case '|' :
-                        this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Exit" , levelType));
+                        this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Exit" , levelType , "exit"));
                         break ;
                     default :
                         break ;

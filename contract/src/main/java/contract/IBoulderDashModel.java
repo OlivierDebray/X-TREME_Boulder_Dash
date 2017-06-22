@@ -17,5 +17,5 @@ public interface IBoulderDashModel {
     void removeMotionless (IMobile mobile) ;
     ArrayList<IMobile> getMotionless () ;
     void setMobilesHavesMoved() ;
-    IMobile getPlayer () throws Exception;
+    IMobile getPlayer () ;
 }

@@ -6,6 +6,8 @@ import contract.IOrderPerformer;
 import contract.IViewSystem;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Objects;
 
 /**
  * @author Olivier Debray olivier.debray@viacesi.fr
@@ -99,7 +101,9 @@ public class BoulderDashController implements IOrderPerformer {
 
     private void manageEntityCollision(IMobile entity) {
         final ArrayList<IMobile> target = new ArrayList<IMobile>();
+        final ArrayList<IMobile> motionlessTarget = new ArrayList<IMobile>();
         boolean isTargetHit = false ;
+        boolean isTargetRemoved = false ;
 
         for (final IMobile mobile : this.boulderDashModel.getMobiles()) {
             if (this.isEntityOnMobile(mobile, entity)) {
@@ -108,19 +112,51 @@ public class BoulderDashController implements IOrderPerformer {
         }
 
         for (final IMobile mobile : target) {
-            isTargetHit = isTargetHit || mobile.hit() ;
+            if (!Objects.equals(mobile.getName(), "class model.Hero")) {
+                if (Objects.equals(mobile.getName(), "class model.Boulder")) {
+                    mobile.setDirection(this.boulderDashModel.getPlayer().getDirection());
+                    this.boulderDashModel.getPlayer().reverseMove(this.boulderDashModel.getPlayer().getDirection());
+                    mobile.move() ;
+                    mobile.setDirection("DOWN") ;
+                }
+                else {
+                    isTargetHit = isTargetHit || mobile.hit() ;
+                }
+            }
+        }
+
+        Iterator<IMobile> iterMotionless = this.boulderDashModel.getMotionless().iterator();
+        while(iterMotionless.hasNext()) {
+            IMobile currentMotionless = iterMotionless.next() ;
+            if (this.isEntityOnMobile(currentMotionless , entity)) {
+                switch (currentMotionless.getName()) {
+                    case "dirt" :
+                        if (Objects.equals(entity.getName(), "class model.Hero"))
+                            iterMotionless.remove();
+                        else {
+                            entity.reverseMove(entity.getDirection());
+                            entity.setDirection("NONE");
+                        }
+                    case "wall" :
+                        entity.reverseMove(entity.getDirection());
+                }
+            }
+        }
+
+        for (final IMobile motionless : motionlessTarget) {
+            isTargetRemoved = isTargetRemoved || motionless.isRemovable() ;
         }
 
         if (isTargetHit) {
             this.boulderDashModel.removeMobile(entity) ;
 
-            try {
-                if (entity.getClass() == this.boulderDashModel.getPlayer().getClass()) {
-                    this.isGameOver = true ;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (entity.getClass() == this.boulderDashModel.getPlayer().getClass()) {
+                this.isGameOver = true ;
             }
+        }
+
+        if (isTargetRemoved) {
+            this.boulderDashModel.removeMotionless(entity);
         }
     }
 

@@ -40,9 +40,6 @@ public class GameFrame extends JFrame implements KeyListener {
     public void keyTyped(KeyEvent keyEvent) {
         try {
             this.eventPerformer.eventPerform(keyEvent);
-            System.out.println("keytyped") ;
-            System.out.println(keyEvent) ;
-            System.out.println(keyEvent.getID()) ;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,7 +54,6 @@ public class GameFrame extends JFrame implements KeyListener {
     public void keyReleased(KeyEvent keyEvent) {
         try {
             this.eventPerformer.eventPerform(keyEvent);
-            System.out.println(keyEvent.getID()) ;
         } catch (Exception e) {
             e.printStackTrace();
         }

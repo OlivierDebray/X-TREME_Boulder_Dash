@@ -14,11 +14,13 @@ import java.io.IOException;
  */
 public class Motionless implements IMobile {
     private Image image;
+    private String name ;
     private Position position;
     private Dimension dimension;
     private IBoulderDashModel boulderDashModel;
+    private boolean isRemovable ;
 
-    public Motionless( final Position position, final Dimension dimension, final String image , final int levelType){
+    public Motionless( final Position position, final Dimension dimension, final String image , final int levelType , final String name){
         this.position = position ;
         this.dimension = dimension ;
         try {
@@ -26,6 +28,19 @@ public class Motionless implements IMobile {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        this.name = name ;
+
+        switch (name) {
+            case "dirt" :
+                this.isRemovable = true ;
+            default :
+                this.isRemovable = false ;
+        }
+    }
+
+    @Override
+    public String getName () {
+        return this.name ;
     }
 
     @Override
@@ -106,6 +121,11 @@ public class Motionless implements IMobile {
     }
 
     @Override
+    public void reverseMove(String direction) {
+
+    }
+
+    @Override
     public void placeInArea(final IArea area){
         this.position.setXmax(area.getDimensionWidth());
         this.position.setYmax(area.getDimensionHeight());
@@ -114,6 +134,11 @@ public class Motionless implements IMobile {
     @Override
     public boolean hit() {
         return false;
+    }
+
+    @Override
+    public boolean isRemovable () {
+        return this.isRemovable ;
     }
 
     @Override
