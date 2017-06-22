@@ -8,20 +8,28 @@ import model.Map;
 /**
  * Created by Théo on 21/06/2017.
  */
-public abstract class QueryLevel extends AbstractDAO{
+public abstract class QueryLevel extends AbstractDAO {
 
     private static String sqlMapByID = "{call getMapById(?)}";
 
     private static int idmapColumnIndex = 1;
+    private static int mapColumnIndex = 6;
 
-    public String getQuerySelectByIdMap(int idmap) throws SQLException{
+    private String map;
+
+    public String getQuerySelectByIdMap(int idmap) throws SQLException {
         CallableStatement callStatement = prepareCall(sqlMapByID);
-        Map map = null;
+        Level level = null;
         callStatement.setInt(1, idmap);
-        if (callStatement.execute()){
+        if (callStatement.execute()) {
             ResultSet result = callStatement.getResultSet();
+
+            if (result.first()){
+                map = result.getString(mapColumnIndex);
+
+            }
+            result.close();
         }
-
+        return map;
     }
-
 }
