@@ -16,6 +16,7 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
     private Level level ;
     private ArrayList<IMobile> mobiles;
     private ArrayList<IMobile> motionless;
+    private IMobile hero ;
     private int levelType ;
 
     public BoulderDashModel(int levelType , int levelID){
@@ -28,8 +29,6 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
         this.level.setBoulderDashModel(this);
         //this.level.getLevel(1);
         this.level.buildLevel();
-
-        this.addMobile(new Hero(Direction.NONE , new Position(0*16,0*16) , new Dimension(16,16) , 1 , "hero"));
     }
 
     @Override
@@ -80,16 +79,14 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
         this.notifyObservers() ;
     }
 
+    public void addPlayer(IMobile hero) {
+        this.hero = hero ;
+        hero.setBoulderDashModel(this);
+        this.addMobile(this.hero);
+    }
+
     @Override
     public IMobile getPlayer() throws Exception {
-        for (IMobile mobile : mobiles) {
-            if (mobile.getClass().toString() == "class model.hero") {
-                return mobile ;
-            }
-            else {
-                throw new Exception("Should return a mobile object corresponding to the hero object") ;
-            }
-        }
-        return null ;
+        return this.hero ;
     }
 }

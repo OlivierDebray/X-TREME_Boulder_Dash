@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class BoulderDashController implements IOrderPerformer {
 
-    private static int TIME_SLEEP = 30;
+    private static int TIME_SLEEP = 100;
     private boolean isGameOver = false;
     private IBoulderDashModel boulderDashModel;
     private IViewSystem viewSystem ;
@@ -114,8 +114,12 @@ public class BoulderDashController implements IOrderPerformer {
         if (isTargetHit) {
             this.boulderDashModel.removeMobile(entity) ;
 
-            if (entity.getClass().toString() == "class model.hero") {
-                this.isGameOver = true ;
+            try {
+                if (entity.getClass() == this.boulderDashModel.getPlayer().getClass()) {
+                    this.isGameOver = true ;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

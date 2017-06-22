@@ -17,6 +17,7 @@ class Level {
     Level(int levelType , int levelID) {
         this.levelType = levelType ;
         this.levelText = new char[30][30] ;
+        this.levelText[0][0] = '@' ;
         this.levelText[5][5] = 'X' ;
         this.levelText[2][2] = 'H' ;
         this.levelText[3][3] = 'O' ;
@@ -52,7 +53,7 @@ class Level {
                         this.boulderDashModel.addMobile(new Enemy(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16) , levelType , "amoeba"));
                         break ;
                     case '@' :
-                        this.boulderDashModel.addMobile(new Hero(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16), levelType, "hero" ));
+                        this.boulderDashModel.addPlayer(new Hero(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16), levelType, "hero" ));
                         break ;
                     case 'O' :
                         this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Dirt" , levelType));

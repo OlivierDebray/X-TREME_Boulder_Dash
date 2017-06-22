@@ -37,7 +37,7 @@ public class UserOrder implements IUserOrder {
                 this.order = Order.START ;
                 break ;
             default :
-                this.order = null ;
+                this.order = Order.NONE ;
                 break ;
         }
     }
