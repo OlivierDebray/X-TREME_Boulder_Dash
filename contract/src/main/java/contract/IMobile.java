@@ -18,7 +18,6 @@ public interface IMobile {
     int getDimensionHeight () ;
     int getWidth () ;
     int getHeight () ;
-    int getSpeed () ;
     Image getImage () ;
     void move () ;
     void placeInArea(IArea area) ;

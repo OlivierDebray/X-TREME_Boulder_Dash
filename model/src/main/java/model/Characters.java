@@ -5,8 +5,8 @@ package model;
  */
 public class Characters extends Mobile {
 
-    public Characters(Direction direction, Position position, Dimension dimension, int speed, String image) {
-        super(direction, position, dimension, speed, image);
+    public Characters(Direction direction, Position position, Dimension dimension, String name, int levelType) {
+        super(direction, position, dimension, name , levelType);
     }
 
     public void die(){
