@@ -3,6 +3,7 @@ package main;
 import controller.BoulderDashController;
 import model.BoulderDashModel;
 import view.BoulderDashView;
+import view.GraphicsBuilder;
 
 /**
  * @author Olivier Debray olivier.debray@viacesi.fr
@@ -18,6 +19,7 @@ public class XTremeBoulderDash {
         final BoulderDashController boulderDashController = new BoulderDashController(boulderDashModel);
         final BoulderDashView boulderDashView = new BoulderDashView(boulderDashController, boulderDashModel, boulderDashModel);
         boulderDashController.setViewSystem(boulderDashView);
+
         boulderDashController.play();
     }
 }

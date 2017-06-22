@@ -21,9 +21,15 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
     public BoulderDashModel(int levelType , int levelID){
         this.mobiles = new ArrayList<>() ;
         this.motionless = new ArrayList<>() ;
+
         this.levelType = levelType ;
+
         this.level = new Level(levelType , levelID) ;
         this.level.setBoulderDashModel(this);
+        this.level.getLevel(1);
+        this.level.buildLevel();
+
+        this.addMobile(new Hero(Direction.NONE , new Position(0*16,0*16) , new Dimension(16,16) , 1 , "hero"));
     }
 
     @Override

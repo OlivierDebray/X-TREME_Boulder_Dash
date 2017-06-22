@@ -74,26 +74,34 @@ public class Mobile implements IMobile {
         switch (mobileName) {
             case "hero" :
                 this.images = new Image[5];
-                this.images[Direction.UP.ordinal()] = ImageIO.read(new File("/Sprites/Hero/Up.png"));
-                this.images[Direction.DOWN.ordinal()] = ImageIO.read(new File("/Sprites/Hero/Down.png"));
-                this.images[Direction.RIGHT.ordinal()] = ImageIO.read(new File("/Sprites/Hero/Right.png"));
-                this.images[Direction.LEFT.ordinal()] = ImageIO.read(new File("/Sprites/Hero/Left.png"));
-                this.images[Direction.NONE.ordinal()] = ImageIO.read(new File("/Sprites/Hero/None.png"));
+                this.images[Direction.UP.ordinal()] = ImageIO.read(new File("Sprites/Hero/Up.png"));
+                this.images[Direction.DOWN.ordinal()] = ImageIO.read(new File("Sprites/Hero/Down.png"));
+                this.images[Direction.RIGHT.ordinal()] = ImageIO.read(new File("Sprites/Hero/Right.png"));
+                this.images[Direction.LEFT.ordinal()] = ImageIO.read(new File("Sprites/Hero/Left.png"));
+                this.images[Direction.NONE.ordinal()] = ImageIO.read(new File("Sprites/Hero/None.png"));
+                break ;
             case "enemy_1" :
                 this.images = new Image[1];
-                this.images[1] = ImageIO.read(new File("/Sprites/type_" + levelType + "/Enemy_1.png")) ;
+                this.images[0] = ImageIO.read(new File("Sprites/type_" + levelType + "/Enemy_1.png")) ;
+                break ;
             case "enemy_2" :
                 this.images = new Image[1];
-                this.images[1] = ImageIO.read(new File("/Sprites/type_" + levelType + "/Enemy_2.png")) ;
+                this.images[0] = ImageIO.read(new File("Sprites/type_" + levelType + "/Enemy_2.png")) ;
+                break ;
             case "amoeba" :
                 this.images = new Image[1];
-                this.images[1] = ImageIO.read(new File("/Sprites/type_" + levelType + "/Amoeba.png")) ;
+                this.images[0] = ImageIO.read(new File("Sprites/type_" + levelType + "/Amoeba.png")) ;
+                break ;
             case "boulder" :
                 this.images = new Image[1];
-                this.images[1] = ImageIO.read(new File("/Sprites/type_" + levelType + "/Boulder.png")) ;
+                this.images[0] = ImageIO.read(new File("Sprites/type_" + levelType + "/Boulder.png")) ;
+                break ;
             case "diamond" :
                 this.images = new Image[1];
-                this.images[1] = ImageIO.read(new File("/Sprites/type_" + levelType + "/Diamond.png")) ;
+                this.images[0] = ImageIO.read(new File("Sprites/type_" + levelType + "/Diamond.png")) ;
+                break ;
+            default :
+                break;
         }
     }
 
@@ -122,6 +130,7 @@ public class Mobile implements IMobile {
                 break;
             default:
                 this.direction = Direction.NONE;
+                break;
         }
     }
 
@@ -184,7 +193,12 @@ public class Mobile implements IMobile {
 
     @Override
     public Image getImage() {
-        return this.images[this.direction.ordinal()];
+        if (this.getClass().toString() == "class model.hero") {
+            return this.images[this.direction.ordinal()];
+        }
+        else {
+            return this.images[0] ;
+        }
     }
 
     @Override

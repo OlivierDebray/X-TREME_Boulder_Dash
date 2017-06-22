@@ -51,6 +51,7 @@ public class EventPerformer implements IEventPerformer {
                 break;
             default:
                 userOrder = null;
+                break ;
         }
         return userOrder;
     }
