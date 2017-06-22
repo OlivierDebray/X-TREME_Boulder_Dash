@@ -1,5 +1,9 @@
 package model;
 
+import model.dao.QueryLevel;
+
+import java.sql.SQLException;
+
 /**
  * @author Olivier Debray olivier.debray@viacesi.fr
  *         Made on 21/06/2017
@@ -13,7 +17,16 @@ class Level {
     Level(int levelType , int levelID) {
         this.levelType = levelType ;
         this.levelText = new char[30][30] ;
-        this.levelText[5][5] = 'D' ;
+        this.levelText[5][5] = 'X' ;
+    }
+
+    public void getLevel (int levelID) {
+        QueryLevel queryLevel = new QueryLevel() ;
+        try {
+            queryLevel.getQuerySelectByIdMap(levelID) ;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void buildLevel () {
