@@ -5,6 +5,7 @@ import contract.IOrderPerformer;
 import contract.IUserOrder;
 
 import java.awt.event.KeyEvent;
+import java.util.Objects;
 
 /**
  * Created by Vincent on 14/06/2017.
@@ -18,39 +19,67 @@ public class EventPerformer implements IEventPerformer {
     }
 
     @Override
-    public void eventPerform (final KeyEvent keyCode) throws Exception {
-        final String userOrder = this.keyCodeToUserOrder (keyCode.getKeyCode());
-        if (userOrder != null){
+    public void eventPerform (final KeyEvent keyEvent) throws Exception {
+        final String userOrder = this.keyEventToUserOrder (keyEvent);
+        if (!Objects.equals(userOrder, "")){
             this.orderPerformer.orderPerform(userOrder);
         }
     }
 
-    public String keyCodeToUserOrder (final int keyCode) {
+    public String keyEventToUserOrder (final KeyEvent keyEvent) {
         String userOrder;
-        switch (keyCode){
-            case KeyEvent.VK_UP:
-                userOrder = "UP";
-                break;
-            case KeyEvent.VK_DOWN:
-                userOrder = "DOWN";
-                break;
-            case KeyEvent.VK_RIGHT:
-                userOrder = "RIGHT";
-                break;
-            case KeyEvent.VK_LEFT:
-                userOrder = "LEFT";
-                break;
-            case KeyEvent.VK_W :
-                userOrder = "A";
-                break;
-            case KeyEvent.VK_X :
-                userOrder = "B";
-                break;
-            case KeyEvent.VK_SPACE:
-                userOrder = "START";
-                break;
-            default:
-                userOrder = null;
+        if (keyEvent.getID() == 400) {
+            switch (keyEvent.getKeyChar()){
+                case 'z' :
+                    userOrder = "UP";
+                    break;
+                case 's':
+                    userOrder = "DOWN";
+                    break;
+                case 'd':
+                    userOrder = "RIGHT";
+                    break;
+                case 'q':
+                    userOrder = "LEFT";
+                    break;
+                case 'w' :
+                    userOrder = "A";
+                    break;
+                case 'x' :
+                    userOrder = "B";
+                    break;
+                case ' ':
+                    userOrder = "START";
+                    break;
+                default:
+                    userOrder = "NONE";
+                    break ;
+            }
+        }
+        else if (keyEvent.getID() == 402) {
+            switch (keyEvent.getKeyChar()) {
+                case 'z' :
+                    userOrder = "NONE";
+                    break;
+                case 's':
+                    userOrder = "NONE";
+                    break;
+                case 'd':
+                    userOrder = "NONE";
+                    break;
+                case 'q':
+                    userOrder = "NONE";
+                    break;
+                case 'w' :
+                    userOrder = "NONE";
+                    break;
+                default :
+                    userOrder = "NONE" ;
+                    break ;
+            }
+        }
+        else {
+            userOrder = "NONE" ;
         }
         return userOrder;
     }

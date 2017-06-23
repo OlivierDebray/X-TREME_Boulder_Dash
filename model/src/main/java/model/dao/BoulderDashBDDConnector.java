@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 /**
  * <h1>The Class BoulderDashBDDConnector.</h1>
  *
@@ -24,7 +25,7 @@ final class BoulderDashBDDConnector {
     private static String                  password = "";
 
     /** The url. */
-    private static String                  url      = "jdbc:mysql://localhost/boulderdash?useSSL=false&serverTimezone=UTC";
+    private static String                  url      = "jdbc:mysql://localhost:3306/boulderdash?verifyServerCertificate=false&useSSL=true";
 
     /** The connection. */
     private Connection                     connection;
@@ -68,12 +69,15 @@ final class BoulderDashBDDConnector {
      */
     private boolean open() {
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             this.connection = DriverManager.getConnection(BoulderDashBDDConnector.url, BoulderDashBDDConnector.user,
                     BoulderDashBDDConnector.password);
             this.statement = this.connection.createStatement();
             return true;
         } catch (final SQLException exception) {
             exception.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return false;
     }
