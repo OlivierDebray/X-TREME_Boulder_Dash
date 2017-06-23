@@ -33,18 +33,18 @@ public class GraphicsBuilder implements IGraphicsBuilder {
 
     @Override
     public int getGlobalWidth() {
-        return this.boulderDashModel.getArea().getWidth() ;
+        return this.boulderDashModel.getArea().getDimensionWidth() ;
     }
 
     @Override
     public int getGlobalHeight() {
-        return this.boulderDashModel.getArea().getHeight() ;
+        return this.boulderDashModel.getArea().getDimensionHeight() ;
     }
 
     public void buildEmptyMap() {
-        this.emptyMap = new BufferedImage(this.boulderDashModel.getArea().getWidth(), this.boulderDashModel.getArea().getHeight(), BufferedImage.TYPE_INT_RGB);
+        this.emptyMap = new BufferedImage(this.boulderDashModel.getArea().getDimensionWidth(), this.boulderDashModel.getArea().getDimensionHeight(), BufferedImage.TYPE_INT_RGB);
         final Graphics2D graphics = (Graphics2D) this.emptyMap.getGraphics();
-        graphics.drawImage(this.boulderDashModel.getArea().getImage(), 0, 0, this.boulderDashModel.getArea().getWidth(), this.boulderDashModel.getArea().getHeight(), null);
+        graphics.drawImage(this.boulderDashModel.getArea().getImage(), 0, 0, this.boulderDashModel.getArea().getDimensionWidth(), this.boulderDashModel.getArea().getDimensionHeight(), null);
     }
 
     public void drawMobile (IMobile mobile, Graphics graphics, ImageObserver observer){
