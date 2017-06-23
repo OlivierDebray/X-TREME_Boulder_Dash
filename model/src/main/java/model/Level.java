@@ -9,10 +9,11 @@ import java.sql.SQLException;
  *         Made on 21/06/2017
  */
 
-class Level {
+public class Level {
     private BoulderDashModel boulderDashModel ;
     private int levelType ;
     private char[][] levelText ;
+
 
     Level(int levelType , int levelID) {
         this.levelType = levelType ;
@@ -30,12 +31,23 @@ class Level {
         this.levelText[27][15] = 'H' ;
     }
 
-    public void getLevel (int levelID) {
-        QueryLevel queryLevel = new QueryLevel() ;
+    public void getLevel(int levelID) {
+       QueryLevel queryLevel = new QueryLevel();
+       String map ="";
         try {
-            queryLevel.getQuerySelectByIdMap(levelID) ;
+           map = queryLevel.getQuerySelectByIdMap(levelID) ;
+
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+
+        int i = 0 ;
+
+        for (int y = 0 ; y < 30 ; y++) {
+            for (int x = 0 ; x <20 ; x++) {
+                this.levelText[y][x] = map.charAt(i) ;
+                i++ ;
+            }
         }
     }
 
@@ -44,7 +56,7 @@ class Level {
             this.levelText[29][y] = 'O' ;
             this.levelText[28][y] = 'O' ;
             for (int x = 0 ; x < 30 ; x++) {
-                switch (levelText[y][x]) {
+                switch (this.levelText[y][x]) {
                     case 'D' :
                         this.boulderDashModel.addMobile(new Diamond(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16) , levelType , "diamond" , x+(y*10)));
                         break ;
