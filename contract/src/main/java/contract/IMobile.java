@@ -8,6 +8,7 @@ import java.awt.*;
  */
 
 public interface IMobile {
+    String getName () ;
     String getDirection () ;
     void setDirection (String direction) ;
     int getPositionX () ;
@@ -18,12 +19,14 @@ public interface IMobile {
     int getDimensionHeight () ;
     int getWidth () ;
     int getHeight () ;
-    int getSpeed () ;
+    int getProperID () ;
     Image getImage () ;
     void move () ;
+    void reverseMove (String direction) ;
     void placeInArea(IArea area) ;
     void setBoulderDashModel(IBoulderDashModel boulderDashModel) ;
     boolean hit () ;
+    boolean isRemovable () ;
     boolean isEnemy () ;
     boolean isObject () ;
 }

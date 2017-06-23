@@ -50,6 +50,9 @@ public class GraphicsBuilder implements IGraphicsBuilder {
         for (final IMobile mobile : this.boulderDashModel.getMobiles()) {
             this.drawMobile(mobile, graphics, observer);
         }
+        for (final IMobile motionless : this.boulderDashModel.getMotionless()) {
+            this.drawMobile(motionless, graphics, observer);
+        }
     }
 
     /**
@@ -87,6 +90,10 @@ public class GraphicsBuilder implements IGraphicsBuilder {
      * @see ImageObserver
      */
     public void drawMobile (IMobile mobile, Graphics graphics, ImageObserver observer){
+        final BufferedImage imageMobile = new BufferedImage(mobile.getWidth(), mobile.getHeight(), Transparency.TRANSLUCENT);
+        final Graphics graphicsMobile = imageMobile.getGraphics();
 
+        graphicsMobile.drawImage(mobile.getImage(), 0, 0, mobile.getWidth(), mobile.getHeight(), observer);
+        graphics.drawImage(imageMobile, mobile.getPositionX(), mobile.getPositionY(), observer);
     }
 }

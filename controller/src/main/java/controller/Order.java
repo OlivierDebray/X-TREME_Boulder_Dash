@@ -15,5 +15,6 @@ public enum Order {
     LEFT,
     A,
     B,
-    START
+    START,
+    NONE
 }

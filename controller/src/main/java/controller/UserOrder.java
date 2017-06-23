@@ -18,13 +18,22 @@ public class UserOrder implements IUserOrder {
     private Order order ;
 
     /**
+<<<<<<< HEAD
      * Builder of UserOrder
+=======
+     * Instantiate a new UserOrder object whose order is the one in parameter
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
      * @param order
      */
     public UserOrder (String order) {
         this.setOrder(order);
     }
 
+    /**
+     * Set the order of the instance to an Order state
+     * @param order
+     * @see Order
+     */
     public void setOrder(String order) {
         switch (order) {
             case "UP":
@@ -49,14 +58,19 @@ public class UserOrder implements IUserOrder {
                 this.order = Order.START ;
                 break ;
             default :
-                this.order = null ;
+                this.order = Order.NONE ;
                 break ;
         }
     }
 
     /**
+<<<<<<< HEAD
      * This method allows return the order.toString
      * @return order.toString()
+=======
+     * Get the order of the instance
+     * @return the order and cast it into a string
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
      */
     public String getOrder(){
         return this.order.toString();

@@ -20,6 +20,7 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
      * @see Map
      */
     private Map map;
+<<<<<<< HEAD
 
     /**
      * @see ArrayList<IMobile></IMobile>
@@ -35,38 +36,91 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
      * Builder of BoulderDashModel
      */
     public BoulderDashModel(){
+=======
+    private Level level ;
+    private ArrayList<IMobile> mobiles;
+    private ArrayList<IMobile> motionless;
+    private IMobile hero ;
+    private int levelType ;
 
+    public BoulderDashModel(int levelType , int levelID){
+        this.mobiles = new ArrayList<>() ;
+        this.motionless = new ArrayList<>() ;
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
+
+        this.levelType = levelType ;
+
+        this.level = new Level(levelType , levelID) ;
+        this.level.setBoulderDashModel(this);
+        //this.level.getLevel(levelID);
+        this.level.buildLevel();
     }
 
     @Override
     public void buildArea(int width , int height) {
-        Dimension dimension = new Dimension(width , height) ;
+        this.map = new Map(width*16 , height*16 , this.levelType) ;
     }
 
     @Override
     public IArea getArea() {
-        return null;
+        return this.map ;
     }
 
     @Override
     public void addMobile(IMobile mobile) {
+<<<<<<< HEAD
+=======
+        this.mobiles.add(mobile) ;
+        mobile.setBoulderDashModel(this) ;
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
     }
 
     @Override
     public void removeMobile(IMobile mobile) {
+<<<<<<< HEAD
+=======
+        this.mobiles.remove(mobile) ;
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
     }
 
     @Override
     public ArrayList<IMobile> getMobiles() {
-        return null;
+        return this.mobiles ;
+    }
+
+    @Override
+    public void addMotionless (IMobile motionless) {
+        this.motionless.add(motionless) ;
+        motionless.setBoulderDashModel(this);
+    }
+
+    @Override
+    public void removeMotionless (IMobile motionless) {
+        this.motionless.remove(motionless) ;
+    }
+
+    @Override
+    public ArrayList<IMobile> getMotionless () {
+        return this.motionless ;
     }
 
     @Override
     public void setMobilesHavesMoved() {
+<<<<<<< HEAD
+=======
+        this.setChanged() ;
+        this.notifyObservers() ;
+    }
+
+    public void addPlayer(IMobile hero) {
+        this.hero = hero ;
+        hero.setBoulderDashModel(this);
+        this.addMobile(this.hero);
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
     }
 
     @Override
     public IMobile getPlayer() {
-        return null;
+        return this.hero ;
     }
 }
