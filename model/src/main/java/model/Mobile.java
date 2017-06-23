@@ -20,16 +20,23 @@ public class Mobile implements IMobile {
     private Dimension dimension;
     private Direction direction;
     private IBoulderDashModel boulderDashModel;
+    private int properID ;
 
-    public Mobile(Direction direction, Position position, final Dimension dimension, final String mobileName , final int levelType){
+    public Mobile(Direction direction, Position position, final Dimension dimension, final String mobileName , final int levelType , final int properID){
         this.direction = direction;
         this.position = position;
         this.dimension = dimension;
+        this.properID = properID ;
         try {
             this.buildAllImages(mobileName , levelType);
         } catch (final IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public String getName () {
+        return this.getClass().toString() ;
     }
 
     @Override
@@ -47,10 +54,28 @@ public class Mobile implements IMobile {
             case RIGHT:
                 this.moveRight();
                 break;
-            case NONE:
-                break;
             default:
                 break;
+        }
+    }
+
+    @Override
+    public void reverseMove (String direction) {
+        switch (direction) {
+            case "UP" :
+                this.moveDown();
+                break ;
+            case "RIGHT" :
+                this.moveLeft();
+                break ;
+            case "DOWN" :
+                this.moveUp();
+                break ;
+            case "LEFT" :
+                this.moveRight();
+                break ;
+            default :
+                break ;
         }
     }
 
@@ -192,8 +217,13 @@ public class Mobile implements IMobile {
     }
 
     @Override
+    public int getProperID() {
+        return this.properID ;
+    }
+
+    @Override
     public Image getImage() {
-        if (this.getClass().toString() == "class model.hero") {
+        if (this.getClass() == this.boulderDashModel.getPlayer().getClass()) {
             return this.images[this.direction.ordinal()];
         }
         else {
@@ -219,6 +249,11 @@ public class Mobile implements IMobile {
     @Override
     public boolean hit() {
         return false;
+    }
+
+    @Override
+    public boolean isRemovable () {
+        return false ;
     }
 
     @Override

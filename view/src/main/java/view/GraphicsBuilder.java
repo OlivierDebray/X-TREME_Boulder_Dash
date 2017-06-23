@@ -29,6 +29,9 @@ public class GraphicsBuilder implements IGraphicsBuilder {
         for (final IMobile mobile : this.boulderDashModel.getMobiles()) {
             this.drawMobile(mobile, graphics, observer);
         }
+        for (final IMobile motionless : this.boulderDashModel.getMotionless()) {
+            this.drawMobile(motionless, graphics, observer);
+        }
     }
 
     @Override

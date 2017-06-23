@@ -15,7 +15,8 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
     private Map map;
     private Level level ;
     private ArrayList<IMobile> mobiles;
-    private ArrayList<Motionless> motionless;
+    private ArrayList<IMobile> motionless;
+    private IMobile hero ;
     private int levelType ;
 
     public BoulderDashModel(int levelType , int levelID){
@@ -26,7 +27,7 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
 
         this.level = new Level(levelType , levelID) ;
         this.level.setBoulderDashModel(this);
-        this.level.getLevel(1);
+        //this.level.getLevel(1);
         this.level.buildLevel();
     }
 
@@ -56,16 +57,19 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
         return this.mobiles ;
     }
 
-    public void addMotionless (Motionless motionless) {
+    @Override
+    public void addMotionless (IMobile motionless) {
         this.motionless.add(motionless) ;
         motionless.setBoulderDashModel(this);
     }
 
-    public void removeMotionless (Motionless motionless) {
+    @Override
+    public void removeMotionless (IMobile motionless) {
         this.motionless.remove(motionless) ;
     }
 
-    public ArrayList<Motionless> getMotionless () {
+    @Override
+    public ArrayList<IMobile> getMotionless () {
         return this.motionless ;
     }
 
@@ -75,16 +79,14 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
         this.notifyObservers() ;
     }
 
+    public void addPlayer(IMobile hero) {
+        this.hero = hero ;
+        hero.setBoulderDashModel(this);
+        this.addMobile(this.hero);
+    }
+
     @Override
-    public IMobile getPlayer() throws Exception {
-        for (IMobile mobile : mobiles) {
-            if (mobile.getClass().toString() == "class model.hero") {
-                return mobile ;
-            }
-            else {
-                throw new Exception("Should return a mobile object corresponding to the hero object") ;
-            }
-        }
-        return null ;
+    public IMobile getPlayer() {
+        return this.hero ;
     }
 }

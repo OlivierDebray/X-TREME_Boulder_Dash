@@ -14,18 +14,35 @@ import java.io.IOException;
  */
 public class Motionless implements IMobile {
     private Image image;
+    private String name ;
     private Position position;
     private Dimension dimension;
     private IBoulderDashModel boulderDashModel;
+    private int properID ;
+    private boolean isRemovable ;
 
-    public Motionless( final Position position, final Dimension dimension, final String image , final int levelType){
+    public Motionless( final Position position, final Dimension dimension, final String image , final int levelType , final String name , final int properID){
         this.position = position ;
         this.dimension = dimension ;
+        this.properID = properID ;
         try {
             this.image = ImageIO.read(new File("Sprites/type_"+ levelType +"/"+ image +".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+        this.name = name ;
+
+        switch (name) {
+            case "dirt" :
+                this.isRemovable = true ;
+            default :
+                this.isRemovable = false ;
+        }
+    }
+
+    @Override
+    public String getName () {
+        return this.name ;
     }
 
     @Override
@@ -87,12 +104,17 @@ public class Motionless implements IMobile {
 
     @Override
     public int getWidth() {
-        return 0;
+        return this.getDimensionWidth();
     }
 
     @Override
     public int getHeight() {
-        return 0;
+        return this.getDimensionHeight();
+    }
+
+    @Override
+    public int getProperID() {
+        return this.properID ;
     }
 
     @Override
@@ -106,6 +128,11 @@ public class Motionless implements IMobile {
     }
 
     @Override
+    public void reverseMove(String direction) {
+
+    }
+
+    @Override
     public void placeInArea(final IArea area){
         this.position.setXmax(area.getDimensionWidth());
         this.position.setYmax(area.getDimensionHeight());
@@ -114,6 +141,11 @@ public class Motionless implements IMobile {
     @Override
     public boolean hit() {
         return false;
+    }
+
+    @Override
+    public boolean isRemovable () {
+        return this.isRemovable ;
     }
 
     @Override
