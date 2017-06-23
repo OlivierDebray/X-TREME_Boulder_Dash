@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class BoulderDashController implements IOrderPerformer {
 
-    private static int TIME_SLEEP = 120;
+    private static int TIME_SLEEP = 90;
     private static int DIAMOND_NUMBER = 10 ;
     private int diamondCounter = 0 ;
     private boolean isGameOver = false;
@@ -100,17 +100,6 @@ public class BoulderDashController implements IOrderPerformer {
 
             final ArrayList<IMobile> initialMobiles = new ArrayList<IMobile>() ;
 
-            /*
-             *  Version intiale
-             *
-             *  for (IMobile mobile : this.boulderDashModel.getMobiles()) {
-             *      initialMobiles.add(mobile) ;
-             *  }
-             */
-
-            /*
-             * Version conseillé par IntelliJ
-             */
             initialMobiles.addAll(this.boulderDashModel.getMobiles());
 
             for (IMobile mobile : initialMobiles) {
@@ -123,7 +112,7 @@ public class BoulderDashController implements IOrderPerformer {
     }
 
     /**
-     * Manage the collision between the current mobile and the other mobiles
+     * Manage the collision between the current mobile (here known as entity) and the other mobiles (Mobile and Motionless objects)
      * @param entity
      * @see IMobile
      * @see IBoulderDashModel
@@ -134,17 +123,9 @@ public class BoulderDashController implements IOrderPerformer {
         boolean isTargetHit = false ;
         boolean isTargetRemoved = false ;
 
-        /*
-        Voir si ca vaut pas le  coup de tout faire dans la partie gestion des entités, peut être que cela sera mieux de
-        gérer les éléments qui se déplacent que ceux qui se font superposer
-         */
-
         for (final IMobile mobile : this.boulderDashModel.getMobiles()) {
             if (this.isEntityOnMobile(mobile, entity)) {
                 target.add(mobile) ;
-            }
-            if ((Objects.equals(mobile.getName(), "class model.Boulder")) || (Objects.equals(mobile.getName(), "class model.Diamond"))) {
-                mobile.setDirection("DOWN") ;
             }
         }
 
@@ -155,11 +136,10 @@ public class BoulderDashController implements IOrderPerformer {
                         mobile.setDirection(this.boulderDashModel.getPlayer().getDirection());
                         this.boulderDashModel.getPlayer().reverseMove(this.boulderDashModel.getPlayer().getDirection());
                         mobile.move();
-                        mobile.setDirection("NONE");
+                        this.manageEntityCollision(mobile);
                     }
                     if ((Objects.equals(entity.getName(), "class model.Boulder")) || (Objects.equals(entity.getName(), "class model.Diamond"))) {
                         entity.reverseMove(entity.getDirection());
-                        System.out.println(mobile.getName());
                     }
                     break ;
                 case "class model.Diamond" :
@@ -169,7 +149,6 @@ public class BoulderDashController implements IOrderPerformer {
                     }
                     else if ((Objects.equals(entity.getName(), "class model.Boulder")) || (Objects.equals(entity.getName(), "class model.Diamond"))) {
                         entity.reverseMove(entity.getDirection());
-                        System.out.println(mobile.getName()) ;
                     }
                     break ;
                 case "class model.Enemy" :
@@ -194,7 +173,7 @@ public class BoulderDashController implements IOrderPerformer {
                         }
                         break ;
                     case "class model.Enemy" :
-                        if (Objects.equals(mobile.getName(), "class model.Hero")) {
+                        if (Objects.equals(mobile.getName(), "clxass model.Hero")) {
                             this.boulderDashModel.removeMobile(mobile);
                             this.isGameOver = true ;
                         }
@@ -210,8 +189,10 @@ public class BoulderDashController implements IOrderPerformer {
             if (this.isEntityOnMobile(currentMotionless , entity)) {
                 switch (currentMotionless.getName()) {
                     case "dirt" :
-                        if (Objects.equals(entity.getName(), "class model.Hero"))
+                        if (Objects.equals(entity.getName(), "class model.Hero")) {
                             iterMotionless.remove();
+                            this.boulderDashModel.getPlayer().move();
+                        }
                         else {
                             entity.reverseMove(entity.getDirection());
                             entity.setDirection("NONE");
@@ -241,6 +222,13 @@ public class BoulderDashController implements IOrderPerformer {
         if (diamondCounter == DIAMOND_NUMBER) {
             this.isGameOver = true ;
         }
+
+        for (final IMobile mobileBoulderDiamond : this.boulderDashModel.getMobiles()) {
+            if ((Objects.equals(mobileBoulderDiamond.getName(), "class model.Boulder")) || (Objects.equals(mobileBoulderDiamond.getName(), "class model.Diamond"))) {
+                mobileBoulderDiamond.setDirection("DOWN") ;
+            }
+        }
+
     }
 
     /**

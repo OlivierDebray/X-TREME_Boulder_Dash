@@ -41,6 +41,42 @@ public class Mobile implements IMobile {
 
     @Override
     public void move() {
+        if (this.isEnemy()) {
+            switch (this.getDirection()) {
+                case "UP" :
+                    if (this.clockWiseMove())
+                        setDirection("RIGHT");
+                    else if (!this.clockWiseMove())
+                        setDirection("LEFT");
+                    break ;
+                case "RIGHT" :
+                    if (this.clockWiseMove())
+                        setDirection("DOWN");
+                    else if (!this.clockWiseMove())
+                        setDirection("UP");
+                    break ;
+                case "DOWN" :
+                    if (this.clockWiseMove())
+                        setDirection("LEFT");
+                    else if (!this.clockWiseMove())
+                        setDirection("RIGHT");
+                    break ;
+                case "LEFT" :
+                    if (this.clockWiseMove())
+                        setDirection("UP");
+                    else if (!this.clockWiseMove())
+                        setDirection("DOWN");
+                    break ;
+                case "NONE" :
+                    if (this.clockWiseMove())
+                        setDirection("UP");
+                    else if (!this.clockWiseMove())
+                        setDirection("DOWN");
+                    break ;
+                default :
+                    break ;
+            }
+        }
         switch (this.direction){
             case UP:
                 this.moveUp();
@@ -265,4 +301,6 @@ public class Mobile implements IMobile {
     public boolean isObject() {
         return false;
     }
+
+    public boolean clockWiseMove () {return false;}
 }

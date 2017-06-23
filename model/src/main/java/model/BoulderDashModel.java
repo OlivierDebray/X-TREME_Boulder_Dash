@@ -27,7 +27,7 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
 
         this.level = new Level(levelType , levelID) ;
         this.level.setBoulderDashModel(this);
-        //this.level.getLevel(1);
+        //this.level.getLevel(levelID);
         this.level.buildLevel();
     }
 

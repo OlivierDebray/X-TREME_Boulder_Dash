@@ -11,15 +11,18 @@ public class Enemy extends Characters {
         super(direction, position, dimension, enemyType , levelType , properID);
 
         switch (enemyType) {
-            case "Enemy_1" :
+            case "enemy_1" :
                 this.doDropDiamonds = false ;
                 this.clockWiseMove = true ;
-            case "Enemy_2" :
+                break ;
+            case "enemy_2" :
                 this.doDropDiamonds = true ;
                 this.clockWiseMove = false ;
-            case "Amoeba" :
+                break ;
+            case "amoeba" :
                 this.doDropDiamonds = true ;
                 this.clockWiseMove = true ;
+                break ;
         }
     }
 
@@ -32,4 +35,7 @@ public class Enemy extends Characters {
     public boolean hit() {
         return true;
     }
+
+    @Override
+    public boolean clockWiseMove () {return this.clockWiseMove;}
 }
