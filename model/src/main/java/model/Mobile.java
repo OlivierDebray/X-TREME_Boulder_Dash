@@ -11,16 +11,49 @@ import java.awt.*;
  * Created by Théo on 14/06/2017.
  */
 
+/**
+ * This class instantiate the elements able to move alone
+ */
 public class Mobile implements IMobile {
     private int speed;
+
+    /**
+     *@see Image
+     */
     private Image image[];
+
+    /**
+     * @see Position
+     */
     private Position position;
+
+    /**
+     * @see Dimension
+     */
     private Dimension dimension;
+
+    /**
+     * @see Direction
+     */
     private Direction direction;
+
+    /**
+     * @see BoulderDashModel
+     */
     private BoulderDashModel boulderDashModel;
 
+    /**
+     * Builder of Mobile
+     * @param direction
+     * @param position
+     * @param dimension
+     * @param speed
+     * @param image
+     * @see Direction
+     * @see Position
+     * @see Dimension
+     */
     public Mobile(Direction direction, Position position, final Dimension dimension, final int speed, final String image){
-
     }
 
     public void moveUp(){
@@ -40,12 +73,10 @@ public class Mobile implements IMobile {
     }
 
     public IBoulderDashModel getBoulderDashModel(){
-
         return null;
     }
 
     public void buildAllImages(final String imageName){
-
     }
 
     @Override
@@ -55,7 +86,6 @@ public class Mobile implements IMobile {
 
     @Override
     public void setDirection(String direction) {
-
     }
 
     @Override

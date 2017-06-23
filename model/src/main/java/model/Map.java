@@ -8,11 +8,22 @@ import java.awt.*;
  * Created by Théo on 16/06/2017.
  */
 
+/**
+ * This class allows to include the Map
+ */
 public class Map implements IArea {
+
+    /**
+     * @see Dimension
+     */
     private Dimension dimension;
 
+    /**
+     * Builder of Map
+     * @param dimension
+     * @see Dimension
+     */
     public Map(final Dimension dimension){
-
     }
 
     @Override

@@ -10,12 +10,20 @@ public class Position {
     private int xMax = 1;
     private int yMax = 1;
 
-
+    /**
+     * Builder of Position
+     * @param X
+     * @param Y
+     */
     public Position(final int X, final int Y){
         this.x = x;
         this.y = y;
     }
 
+    /**
+     * @param position
+     * @see Position
+     */
     public Position(final Position position){
         this(position.getX(), position.getY());
     }

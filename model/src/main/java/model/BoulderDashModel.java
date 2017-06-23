@@ -11,11 +11,29 @@ import java.util.Observable;
  * Created by Théo on 16/06/2017.
  */
 
+/**
+ * This class will be the Hearth of the program, where the most important methods will be defined or called
+ */
 public class BoulderDashModel extends Observable implements IBoulderDashModel {
+
+    /**
+     * @see Map
+     */
     private Map map;
+
+    /**
+     * @see ArrayList<IMobile></IMobile>
+     */
     private ArrayList<IMobile> mobiles;
+
+    /**
+     * @see ArrayList<Motionless></Motionless>
+     */
     private ArrayList<Motionless> motionless;
 
+    /**
+     * Builder of BoulderDashModel
+     */
     public BoulderDashModel(){
 
     }
@@ -32,12 +50,10 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
 
     @Override
     public void addMobile(IMobile mobile) {
-
     }
 
     @Override
     public void removeMobile(IMobile mobile) {
-
     }
 
     @Override
@@ -47,7 +63,6 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
 
     @Override
     public void setMobilesHavesMoved() {
-
     }
 
     @Override

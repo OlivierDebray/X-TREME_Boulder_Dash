@@ -14,10 +14,28 @@ import java.util.Observable;
  *         Made on 16/06/2017
  */
 
+/**
+ * This class allows to create a new  window
+ */
 public class GameFrame extends JFrame implements KeyListener {
     //private static long serialVersionUID = -1112124206501543946L ;
+
+    /**
+     * @see IEventPerformer
+     */
     public IEventPerformer eventPerformer ;
 
+    /**
+     * Builder of GameFrame
+     * @param title
+     * @param eventPerformer
+     * @param graphicsBuilder
+     * @param observable
+     * @throws HeadlessException
+     * @see IEventPerformer
+     * @see IGraphicsBuilder
+     * @see Observable
+     */
     public GameFrame (String title , IEventPerformer eventPerformer , IGraphicsBuilder graphicsBuilder , Observable observable) throws HeadlessException {
         this.eventPerformer = eventPerformer;
 
@@ -36,6 +54,9 @@ public class GameFrame extends JFrame implements KeyListener {
         this.setVisible(true);
     }
 
+    /**
+     * @param keyEvent
+     */
     @Override
     public void keyTyped(KeyEvent keyEvent) {
         try {
@@ -45,11 +66,17 @@ public class GameFrame extends JFrame implements KeyListener {
         }
     }
 
+    /**
+     * @param keyEvent
+     */
     @Override
     public void keyPressed(KeyEvent keyEvent) {
 
     }
 
+    /**
+     * @param keyEvent
+     */
     @Override
     public void keyReleased(KeyEvent keyEvent) {
 

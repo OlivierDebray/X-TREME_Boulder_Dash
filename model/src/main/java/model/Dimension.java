@@ -8,11 +8,21 @@ public class Dimension {
     private int width;
     private int height;
 
+    /**
+     * Builder of Dimension
+     * @param width
+     * @param height
+     */
     public Dimension (final int width , final int height) {
         this.setWidth(width);
         this.setHeight(height);
     }
 
+    /**
+     * 2nd Builder of Dimension
+     * @param dimension
+     * @see Dimension
+     */
     public Dimension(final Dimension dimension){
         this(dimension.getWidth(), dimension.getHeight());
     }

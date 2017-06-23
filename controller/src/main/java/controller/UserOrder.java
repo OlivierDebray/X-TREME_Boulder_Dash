@@ -3,12 +3,24 @@ package controller;
         import contract.IUserOrder;
 
 /**
- * Created by Vincent on 16/06/2017.
+ * @author VIncent Alayrac vincent.alayrac@viacesi.fr
+ *         Made on 16/06/2017
  */
 
+/**
+ * This class allows to move the player
+ */
 public class UserOrder implements IUserOrder {
+
+    /**
+     * @see Order
+     */
     private Order order ;
 
+    /**
+     * Builder of UserOrder
+     * @param order
+     */
     public UserOrder (String order) {
         this.setOrder(order);
     }
@@ -42,6 +54,10 @@ public class UserOrder implements IUserOrder {
         }
     }
 
+    /**
+     * This method allows return the order.toString
+     * @return order.toString()
+     */
     public String getOrder(){
         return this.order.toString();
     }

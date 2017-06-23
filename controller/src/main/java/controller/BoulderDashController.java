@@ -11,6 +11,10 @@ import java.util.ArrayList;
  * @author Olivier Debray olivier.debray@viacesi.fr
  *         Made on 16/06/2017
  */
+
+/**
+ * This class manage the data of BoulderDash
+ */
 public class BoulderDashController implements IOrderPerformer {
 
     private static int TIME_SLEEP = 30;
@@ -18,9 +22,22 @@ public class BoulderDashController implements IOrderPerformer {
     private IBoulderDashModel boulderDashModel;
     private IViewSystem viewSystem ;
 
+    /**
+     * Builder of BoulderDashController
+     * When constructing a boulderDashController object, the boulderDashModel matches the boulderDashModel
+     * @param boulderDashModel
+     * @see IBoulderDashModel
+     */
     public BoulderDashController (IBoulderDashModel boulderDashModel) {
         this.boulderDashModel = boulderDashModel ;
     }
+
+
+    /**
+     * Method of moving the player
+     * @param stringUserOrder
+     * @throws Exception
+     */
 
     public void orderPerform (String stringUserOrder) throws Exception {
         UserOrder userOrder = new UserOrder(stringUserOrder) ;
@@ -60,11 +77,15 @@ public class BoulderDashController implements IOrderPerformer {
         }
     }
 
+    /**
+     * This method allows to activate the end of the game
+     */
     public void play() {
         this.gameLoop();
         this.viewSystem.displayMessage("Game Over !");
         this.viewSystem.closeAll();
     }
+
 
     public void gameLoop(){
         while (!this.isGameOver) {
@@ -98,6 +119,12 @@ public class BoulderDashController implements IOrderPerformer {
         }
     }
 
+    /**
+     * Method that manages collisions
+     * @param entity
+     * @see ArrayList<IMobile></IMobile>
+     * @see IMobile
+     */
     private void manageEntityCollision(IMobile entity) {
         final ArrayList<IMobile> target = new ArrayList<IMobile>();
         boolean isTargetHit = false ;
@@ -121,6 +148,13 @@ public class BoulderDashController implements IOrderPerformer {
         }
     }
 
+    /**
+     *This method makes it possible to know the position of the mobile
+     * @param mobile
+     * @param entity
+     * @return false
+     * @see IMobile
+     */
     private boolean isEntityOnMobile(IMobile mobile, IMobile entity) {
         if (((entity.getPositionX() / entity.getWidth()) >= (mobile.getPositionX() / entity.getWidth()))
                 && ((entity.getPositionX() / entity.getWidth()) <= ((mobile.getPositionX() + mobile.getWidth()) / entity.getWidth()))) {
@@ -132,10 +166,20 @@ public class BoulderDashController implements IOrderPerformer {
         return false;
     }
 
+    /**
+     * This method allows to define the ViewSystem
+     * @param viewSystem
+     * @see IViewSystem
+     */
     public void setViewSystem (IViewSystem viewSystem){
         this.viewSystem = viewSystem ;
     }
 
+    /**
+     * This method allows to return the ViewSystem
+     * @return viewSystem
+     * @see IViewSystem
+     */
     public IViewSystem getViewSystem () {
         return this.viewSystem ;
     }
