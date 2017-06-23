@@ -1,9 +1,6 @@
 package controller;
 
-import contract.IBoulderDashModel;
-import contract.IMobile;
-import contract.IOrderPerformer;
-import contract.IViewSystem;
+import contract.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,10 +19,23 @@ public class BoulderDashController implements IOrderPerformer {
     private IBoulderDashModel boulderDashModel;
     private IViewSystem viewSystem ;
 
+    /**
+     * Set a new instance of the Controller
+     * @param boulderDashModel
+     *      Tha current Model instance of the game
+     * @see IBoulderDashModel
+     */
     public BoulderDashController (IBoulderDashModel boulderDashModel) {
         this.boulderDashModel = boulderDashModel ;
     }
 
+    /**
+     * @param stringUserOrder
+     *      The string corresponding to the user's order
+     * @throws Exception when direction is set
+     * @see IBoulderDashModel
+     * @see UserOrder
+     */
     public void orderPerform (String stringUserOrder) throws Exception {
         UserOrder userOrder = new UserOrder(stringUserOrder) ;
         if (userOrder != null) {
@@ -63,6 +73,10 @@ public class BoulderDashController implements IOrderPerformer {
         }
     }
 
+    /**
+     * Launch the game
+     * @see IViewSystem
+     */
     public void play() {
         this.gameLoop();
         if (diamondCounter == DIAMOND_NUMBER)
@@ -72,6 +86,10 @@ public class BoulderDashController implements IOrderPerformer {
         this.viewSystem.closeAll();
     }
 
+    /**
+     * The game loop, running while the player hasn't died or won
+     * @see IBoulderDashModel
+     */
     public void gameLoop(){
         while (!this.isGameOver) {
             try {
@@ -104,6 +122,12 @@ public class BoulderDashController implements IOrderPerformer {
         }
     }
 
+    /**
+     * Manage the collision between the current mobile and the other mobiles
+     * @param entity
+     * @see IMobile
+     * @see IBoulderDashModel
+     */
     private void manageEntityCollision(IMobile entity) {
         final ArrayList<IMobile> target = new ArrayList<IMobile>();
         final ArrayList<IMobile> motionlessTarget = new ArrayList<IMobile>();
@@ -219,6 +243,13 @@ public class BoulderDashController implements IOrderPerformer {
         }
     }
 
+    /**
+     * Calculate if two mobiles are superposed
+     * @param mobile
+     * @param entity
+     * @see IMobile
+     * @return if yes or no the mobiles are superposed
+     */
     private boolean isEntityOnMobile(IMobile mobile, IMobile entity) {
         if ((entity.getPositionY() == mobile.getPositionY()) && (entity.getPositionX() == mobile.getPositionX())) {
             if (mobile.getProperID() != entity.getProperID()) {
@@ -228,10 +259,20 @@ public class BoulderDashController implements IOrderPerformer {
         return false;
     }
 
+    /**
+     * Set the ViewSystem instance of the controller to the one in parameter
+     * @param viewSystem
+     * @see IViewSystem
+     */
     public void setViewSystem (IViewSystem viewSystem){
         this.viewSystem = viewSystem ;
     }
 
+    /**
+     * Get the ViewSystem instance of the controller
+     * @see IViewSystem
+     * @return the ViewSystem instance
+     */
     public IViewSystem getViewSystem () {
         return this.viewSystem ;
     }
