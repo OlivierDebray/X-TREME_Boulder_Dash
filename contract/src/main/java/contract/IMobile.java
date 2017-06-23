@@ -19,6 +19,7 @@ public interface IMobile {
     int getDimensionHeight () ;
     int getWidth () ;
     int getHeight () ;
+    int getProperID () ;
     Image getImage () ;
     void move () ;
     void reverseMove (String direction) ;

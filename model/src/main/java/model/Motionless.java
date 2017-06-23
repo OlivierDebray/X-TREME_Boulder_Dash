@@ -18,11 +18,13 @@ public class Motionless implements IMobile {
     private Position position;
     private Dimension dimension;
     private IBoulderDashModel boulderDashModel;
+    private int properID ;
     private boolean isRemovable ;
 
-    public Motionless( final Position position, final Dimension dimension, final String image , final int levelType , final String name){
+    public Motionless( final Position position, final Dimension dimension, final String image , final int levelType , final String name , final int properID){
         this.position = position ;
         this.dimension = dimension ;
+        this.properID = properID ;
         try {
             this.image = ImageIO.read(new File("Sprites/type_"+ levelType +"/"+ image +".png"));
         } catch (IOException e) {
@@ -108,6 +110,11 @@ public class Motionless implements IMobile {
     @Override
     public int getHeight() {
         return this.getDimensionHeight();
+    }
+
+    @Override
+    public int getProperID() {
+        return this.properID ;
     }
 
     @Override

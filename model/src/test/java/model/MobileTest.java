@@ -24,7 +24,7 @@ public class MobileTest {
     public void setUp(){
         position = new Position(1 , 2) ;
         dimension = new Dimension(10, 20);
-        mobile = new Mobile(Direction.RIGHT, position , dimension, "Image.png" , 1);
+        mobile = new Mobile(Direction.RIGHT, position , dimension, "Image.png" , 1 , 1);
     }
     @Test
     public void moveUp() throws Exception {

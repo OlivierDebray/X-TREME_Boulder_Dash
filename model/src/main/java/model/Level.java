@@ -19,11 +19,15 @@ class Level {
         this.levelText = new char[30][30] ;
         this.levelText[0][0] = '@' ;
         this.levelText[5][5] = 'X' ;
-        this.levelText[2][2] = 'H' ;
-        this.levelText[3][3] = 'O' ;
-        this.levelText[4][4] = 'O' ;
-        this.levelText[0][15] = 'X' ;
-        this.levelText[0][18] = 'H' ;
+        this.levelText[7][5] = 'D' ;
+        this.levelText[5][6] = 'D' ;
+        this.levelText[7][6] = 'X' ;
+        this.levelText[5][7] = 'X' ;
+        this.levelText[7][7] = 'X' ;
+        this.levelText[5][8] = 'D' ;
+        this.levelText[7][8] = 'D' ;
+        this.levelText[5][12] = 'X' ;
+        this.levelText[27][15] = 'H' ;
     }
 
     public void getLevel (int levelID) {
@@ -38,34 +42,35 @@ class Level {
     public void buildLevel () {
         for (int y = 0 ; y < 30 ; y++) {
             this.levelText[29][y] = 'O' ;
+            this.levelText[28][y] = 'O' ;
             for (int x = 0 ; x < 30 ; x++) {
                 switch (levelText[y][x]) {
                     case 'D' :
-                        this.boulderDashModel.addMobile(new Diamond(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16) , levelType , "diamond"));
+                        this.boulderDashModel.addMobile(new Diamond(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16) , levelType , "diamond" , x+(y*10)));
                         break ;
                     case 'X' :
-                        this.boulderDashModel.addMobile(new Boulder(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16) , levelType , "boulder"));
+                        this.boulderDashModel.addMobile(new Boulder(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16) , levelType , "boulder" , x+(y*10)));
                         break ;
                     case '^' :
-                        this.boulderDashModel.addMobile(new Enemy(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16) , levelType , "enemy_1"));
+                        this.boulderDashModel.addMobile(new Enemy(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16) , levelType , "enemy_1" , x+(y*10)));
                         break ;
                     case 'B' :
-                        this.boulderDashModel.addMobile(new Enemy(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16) , levelType , "enemy_2"));
+                        this.boulderDashModel.addMobile(new Enemy(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16) , levelType , "enemy_2" , x+(y*10)));
                         break ;
                     case '¤' :
-                        this.boulderDashModel.addMobile(new Enemy(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16) , levelType , "amoeba"));
+                        this.boulderDashModel.addMobile(new Enemy(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16) , levelType , "amoeba" , x+(y*10)));
                         break ;
                     case '@' :
-                        this.boulderDashModel.addPlayer(new Hero(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16), levelType, "hero" ));
+                        this.boulderDashModel.addPlayer(new Hero(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16 , 16), levelType, "hero" , x+(y*10)));
                         break ;
                     case 'O' :
-                        this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Dirt" , levelType , "dirt"));
+                        this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Dirt" , levelType , "dirt" , x+(y*10)));
                         break ;
                     case 'H' :
-                        this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Wall" , levelType , "wall"));
+                        this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Wall" , levelType , "wall" , x+(y*10)));
                         break ;
                     case '|' :
-                        this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Exit" , levelType , "exit"));
+                        this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16 , 16) , "Exit" , levelType , "exit" , x+(y*10)));
                         break ;
                     default :
                         break ;

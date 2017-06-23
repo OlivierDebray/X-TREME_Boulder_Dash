@@ -20,11 +20,13 @@ public class Mobile implements IMobile {
     private Dimension dimension;
     private Direction direction;
     private IBoulderDashModel boulderDashModel;
+    private int properID ;
 
-    public Mobile(Direction direction, Position position, final Dimension dimension, final String mobileName , final int levelType){
+    public Mobile(Direction direction, Position position, final Dimension dimension, final String mobileName , final int levelType , final int properID){
         this.direction = direction;
         this.position = position;
         this.dimension = dimension;
+        this.properID = properID ;
         try {
             this.buildAllImages(mobileName , levelType);
         } catch (final IOException e) {
@@ -212,6 +214,11 @@ public class Mobile implements IMobile {
             default:
                 return this.getDimensionHeight();
         }
+    }
+
+    @Override
+    public int getProperID() {
+        return this.properID ;
     }
 
     @Override
