@@ -6,6 +6,8 @@ import contract.IOrderPerformer;
 import contract.IViewSystem;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Objects;
 
 /**
  * @author Olivier Debray olivier.debray@viacesi.fr
@@ -13,7 +15,9 @@ import java.util.ArrayList;
  */
 public class BoulderDashController implements IOrderPerformer {
 
-    private static int TIME_SLEEP = 30;
+    private static int TIME_SLEEP = 120;
+    private static int DIAMOND_NUMBER = 10 ;
+    private int diamondCounter = 0 ;
     private boolean isGameOver = false;
     private IBoulderDashModel boulderDashModel;
     private IViewSystem viewSystem ;
@@ -55,14 +59,16 @@ public class BoulderDashController implements IOrderPerformer {
                         break ;
                 }
                 hero.setDirection(direction);
-                throw new Exception(direction) ;
             }
         }
     }
 
     public void play() {
         this.gameLoop();
-        this.viewSystem.displayMessage("Game Over !");
+        if (diamondCounter == DIAMOND_NUMBER)
+            this.viewSystem.displayMessage("All diamonds have been collected ! Great !");
+        else
+            this.viewSystem.displayMessage("Game Over !");
         this.viewSystem.closeAll();
     }
 
@@ -100,33 +106,123 @@ public class BoulderDashController implements IOrderPerformer {
 
     private void manageEntityCollision(IMobile entity) {
         final ArrayList<IMobile> target = new ArrayList<IMobile>();
+        final ArrayList<IMobile> motionlessTarget = new ArrayList<IMobile>();
         boolean isTargetHit = false ;
+        boolean isTargetRemoved = false ;
+
+        /*
+        Voir si ca vaut pas le  coup de tout faire dans la partie gestion des entités, peut être que cela sera mieux de
+        gérer les éléments qui se déplacent que ceux qui se font superposer
+         */
 
         for (final IMobile mobile : this.boulderDashModel.getMobiles()) {
             if (this.isEntityOnMobile(mobile, entity)) {
                 target.add(mobile) ;
             }
+            if ((Objects.equals(mobile.getName(), "class model.Boulder")) || (Objects.equals(mobile.getName(), "class model.Diamond"))) {
+                mobile.setDirection("DOWN") ;
+            }
         }
 
         for (final IMobile mobile : target) {
-            isTargetHit = isTargetHit || mobile.hit() ;
+            switch (mobile.getName()) {
+                case "class model.Boulder" :
+                    if (Objects.equals(entity.getName(), "class model.Hero")) {
+                        mobile.setDirection(this.boulderDashModel.getPlayer().getDirection());
+                        this.boulderDashModel.getPlayer().reverseMove(this.boulderDashModel.getPlayer().getDirection());
+                        mobile.move();
+                        mobile.setDirection("NONE");
+                    }
+                    if ((Objects.equals(entity.getName(), "class model.Boulder")) || (Objects.equals(entity.getName(), "class model.Diamond"))) {
+                        entity.reverseMove(entity.getDirection());
+                        System.out.println(mobile.getName());
+                    }
+                    break ;
+                case "class model.Diamond" :
+                    if ((Objects.equals(entity.getName(), "class model.Hero"))) {
+                        this.boulderDashModel.removeMobile(mobile);
+                        diamondCounter++ ;
+                    }
+                    else if ((Objects.equals(entity.getName(), "class model.Boulder")) || (Objects.equals(entity.getName(), "class model.Diamond"))) {
+                        entity.reverseMove(entity.getDirection());
+                        System.out.println(mobile.getName()) ;
+                    }
+                    break ;
+                case "class model.Enemy" :
+                    if ((Objects.equals(entity.getName(), "class model.Boulder")) || (Objects.equals(entity.getName(), "class model.Diamond"))) {
+                        this.boulderDashModel.removeMobile(mobile);
+                    }
+                    if ((Objects.equals(entity.getName(), "class model.Hero"))) {
+                        isTargetHit = isTargetHit || mobile.hit() ;
+                    }
+                    break ;
+                default :
+                    break ;
+            }
+            if ((Objects.equals(mobile.getName(), "class model.Hero")) || (Objects.equals(mobile.getName(), "class model.Enemy"))) {
+                switch (entity.getName()) {
+                    case "class model.Boulder" :
+                    case "class model.Diamond" :
+                        if (Objects.equals(entity.getDirection(), "DOWN")) {
+                            if (Objects.equals(mobile.getName(), "class model.Hero"))
+                                this.isGameOver = true ;
+                            this.boulderDashModel.removeMobile(mobile);
+                        }
+                        break ;
+                    case "class model.Enemy" :
+                        if (Objects.equals(mobile.getName(), "class model.Hero")) {
+                            this.boulderDashModel.removeMobile(mobile);
+                            this.isGameOver = true ;
+                        }
+                    default :
+                        break ;
+                }
+            }
+        }
+
+        Iterator<IMobile> iterMotionless = this.boulderDashModel.getMotionless().iterator();
+        while(iterMotionless.hasNext()) {
+            IMobile currentMotionless = iterMotionless.next() ;
+            if (this.isEntityOnMobile(currentMotionless , entity)) {
+                switch (currentMotionless.getName()) {
+                    case "dirt" :
+                        if (Objects.equals(entity.getName(), "class model.Hero"))
+                            iterMotionless.remove();
+                        else {
+                            entity.reverseMove(entity.getDirection());
+                            entity.setDirection("NONE");
+                        }
+                    case "wall" :
+                        entity.reverseMove(entity.getDirection());
+                }
+            }
+        }
+
+        for (final IMobile motionless : motionlessTarget) {
+            isTargetRemoved = isTargetRemoved || motionless.isRemovable() ;
         }
 
         if (isTargetHit) {
             this.boulderDashModel.removeMobile(entity) ;
 
-            if (entity.getClass().toString() == "class model.hero") {
+            if (entity.getClass() == this.boulderDashModel.getPlayer().getClass()) {
                 this.isGameOver = true ;
             }
+        }
+
+        if (isTargetRemoved) {
+            this.boulderDashModel.removeMotionless(entity);
+        }
+
+        if (diamondCounter == DIAMOND_NUMBER) {
+            this.isGameOver = true ;
         }
     }
 
     private boolean isEntityOnMobile(IMobile mobile, IMobile entity) {
-        if (((entity.getPositionX() / entity.getWidth()) >= (mobile.getPositionX() / entity.getWidth()))
-                && ((entity.getPositionX() / entity.getWidth()) <= ((mobile.getPositionX() + mobile.getWidth()) / entity.getWidth()))) {
-            if (((entity.getPositionY() / entity.getHeight()) >= (mobile.getPositionY() / entity.getHeight()))
-                    && ((entity.getPositionY() / entity.getHeight()) <= ((mobile.getPositionY() + mobile.getHeight()) / entity.getHeight()))) {
-                return true;
+        if ((entity.getPositionY() == mobile.getPositionY()) && (entity.getPositionX() == mobile.getPositionX())) {
+            if (mobile.getProperID() != entity.getProperID()) {
+                return true ;
             }
         }
         return false;

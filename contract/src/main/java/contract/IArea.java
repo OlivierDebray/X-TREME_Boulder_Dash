@@ -10,7 +10,5 @@ import java.awt.Image;
 public interface IArea {
     int getDimensionWidth () ;
     int getDimensionHeight () ;
-    int getWidth () ;
-    int getHeight () ;
     Image getImage() ;
 }
