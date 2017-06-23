@@ -13,45 +13,80 @@ import java.util.Observable;
 
 public class BoulderDashModel extends Observable implements IBoulderDashModel {
     private Map map;
+    private Level level ;
     private ArrayList<IMobile> mobiles;
-    private ArrayList<Motionless> motionless;
+    private ArrayList<IMobile> motionless;
+    private IMobile hero ;
+    private int levelType ;
 
-    public BoulderDashModel(){
+    public BoulderDashModel(int levelType , int levelID){
+        this.mobiles = new ArrayList<>() ;
+        this.motionless = new ArrayList<>() ;
 
+        this.levelType = levelType ;
+
+        this.level = new Level(levelType , levelID) ;
+        this.level.setBoulderDashModel(this);
+        //this.level.getLevel(1);
+        this.level.buildLevel();
     }
 
     @Override
     public void buildArea(int width , int height) {
-        Dimension dimension = new Dimension(width , height) ;
+        this.map = new Map(width*16 , height*16 , this.levelType) ;
     }
 
     @Override
     public IArea getArea() {
-        return null;
+        return this.map ;
     }
 
     @Override
     public void addMobile(IMobile mobile) {
-
+        this.mobiles.add(mobile) ;
+        mobile.setBoulderDashModel(this) ;
     }
 
     @Override
     public void removeMobile(IMobile mobile) {
-
+        this.mobiles.remove(mobile) ;
     }
 
     @Override
     public ArrayList<IMobile> getMobiles() {
-        return null;
+        return this.mobiles ;
+    }
+
+    @Override
+    public void addMotionless (IMobile motionless) {
+        this.motionless.add(motionless) ;
+        motionless.setBoulderDashModel(this);
+    }
+
+    @Override
+    public void removeMotionless (IMobile motionless) {
+        this.motionless.remove(motionless) ;
+    }
+
+    @Override
+    public ArrayList<IMobile> getMotionless () {
+        return this.motionless ;
     }
 
     @Override
     public void setMobilesHavesMoved() {
+        this.setChanged() ;
+        this.notifyObservers() ;
+    }
 
+    public void addPlayer(IMobile hero) {
+        this.hero = hero ;
+        hero.setBoulderDashModel(this);
+        this.addMobile(this.hero);
     }
 
     @Override
     public IMobile getPlayer() {
-        return null;
+        return this.hero ;
     }
 }
