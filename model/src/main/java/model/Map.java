@@ -17,6 +17,7 @@ import java.io.IOException;
 public class Map implements IArea {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     /**
      * @see Dimension
@@ -37,11 +38,21 @@ public class Map implements IArea {
     public Map(int width , int height , int levelType){
         this.dimension = new Dimension(width , height) ;
 
+=======
+    private static String IMAGE = "Background.png" ;
+    private Image image ;
+    private Dimension dimension;
+
+    public Map(int width , int height , int levelType){
+        this.dimension = new Dimension(width , height) ;
+
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
         try {
             this.image = ImageIO.read(new File("Sprites/type_" + levelType + "/" + IMAGE));
         } catch (final IOException e) {
             e.printStackTrace();
         }
+<<<<<<< HEAD
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
     }
 
@@ -58,6 +69,10 @@ public class Map implements IArea {
         } catch (final IOException e) {
             e.printStackTrace();
         }
+    }
+
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
+=======
     }
 
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b

@@ -13,6 +13,7 @@ public class Enemy extends Characters {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     /**
      * Builder of Enemy
      * @param direction
@@ -27,6 +28,8 @@ public class Enemy extends Characters {
     public Enemy(Direction direction, Position position, Dimension dimension, int speed, String image) {
         super(direction, position, dimension, speed, image);
 =======
+=======
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
     public Enemy(Direction direction, Position position, Dimension dimension, int levelType , String enemyType , int properID) {
@@ -47,6 +50,7 @@ public class Enemy extends Characters {
                 break ;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
     }
 
     @Override
@@ -56,6 +60,16 @@ public class Enemy extends Characters {
     }
 
     @Override
+=======
+    }
+
+    @Override
+    public boolean isEnemy() {
+        return true;
+    }
+
+    @Override
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
     }
 

@@ -20,6 +20,7 @@ import java.io.IOException;
 public class Mobile implements IMobile {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private int speed;
 
     /**
@@ -30,6 +31,9 @@ public class Mobile implements IMobile {
     /**
      * @see Position
      */
+=======
+    private Image images[];
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
     private Image images[];
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
@@ -47,6 +51,7 @@ public class Mobile implements IMobile {
      * @see Direction
      */
     private Direction direction;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -93,6 +98,19 @@ public class Mobile implements IMobile {
             this.buildAllImages(mobileName , levelType);
         } catch (final IOException e) {
             e.printStackTrace();
+=======
+    private IBoulderDashModel boulderDashModel;
+    private int properID ;
+
+    public Mobile(Direction direction, Position position, final Dimension dimension, final String mobileName , final int levelType , final int properID){
+        this.direction = direction;
+        this.position = position;
+        this.dimension = dimension;
+        this.properID = properID ;
+        try {
+            this.buildAllImages(mobileName , levelType);
+        } catch (final IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -217,10 +235,75 @@ public class Mobile implements IMobile {
                 break;
             default:
                 break;
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
         }
     }
 
     @Override
+<<<<<<< HEAD
+    public String getName () {
+        return this.getClass().toString() ;
+    }
+
+    @Override
+    public void move() {
+        if (this.isEnemy()) {
+            switch (this.getDirection()) {
+                case "UP" :
+                    if (this.clockWiseMove())
+                        setDirection("RIGHT");
+                    else if (!this.clockWiseMove())
+                        setDirection("LEFT");
+                    break ;
+                case "RIGHT" :
+                    if (this.clockWiseMove())
+                        setDirection("DOWN");
+                    else if (!this.clockWiseMove())
+                        setDirection("UP");
+                    break ;
+                case "DOWN" :
+                    if (this.clockWiseMove())
+                        setDirection("LEFT");
+                    else if (!this.clockWiseMove())
+                        setDirection("RIGHT");
+                    break ;
+                case "LEFT" :
+                    if (this.clockWiseMove())
+                        setDirection("UP");
+                    else if (!this.clockWiseMove())
+                        setDirection("DOWN");
+                    break ;
+                case "NONE" :
+                    if (this.clockWiseMove())
+                        setDirection("UP");
+                    else if (!this.clockWiseMove())
+                        setDirection("DOWN");
+                    break ;
+                default :
+                    break ;
+            }
+        }
+        switch (this.direction){
+            case UP:
+                this.moveUp();
+                break;
+            case DOWN:
+                this.moveDown();
+                break;
+            case LEFT:
+                this.moveLeft();
+                break;
+            case RIGHT:
+                this.moveRight();
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+=======
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
     public void reverseMove (String direction) {
         switch (direction) {
             case "UP" :
@@ -238,11 +321,15 @@ public class Mobile implements IMobile {
             default :
                 break ;
         }
+<<<<<<< HEAD
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
+=======
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
     }
 
     public void moveUp(){
         this.position.setY(this.position.getY() - 16);
+<<<<<<< HEAD
     }
 
 =======
@@ -267,6 +354,10 @@ public class Mobile implements IMobile {
 
     public void moveUp(){
         this.position.setY(this.position.getY() - 16);
+    }
+
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
+=======
     }
 
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
@@ -284,12 +375,15 @@ public class Mobile implements IMobile {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public IBoulderDashModel getBoulderDashModel(){
         return null;
     }
 
     public void buildAllImages(final String imageName){
 =======
+=======
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
     public void buildAllImages(final String mobileName , final int levelType) throws IOException{
@@ -326,6 +420,9 @@ public class Mobile implements IMobile {
                 break;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
+=======
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
@@ -340,7 +437,10 @@ public class Mobile implements IMobile {
     public void setDirection(String direction) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
         switch (direction){
@@ -364,6 +464,9 @@ public class Mobile implements IMobile {
                 break;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
+=======
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b

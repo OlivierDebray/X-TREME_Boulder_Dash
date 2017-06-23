@@ -12,12 +12,17 @@ public class Position {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     /**
      * Builder of Position
      * @param X
      * @param Y
      */
     public Position(final int X, final int Y){
+=======
+
+    public Position(int x, int y){
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
 
     public Position(int x, int y){

@@ -22,6 +22,7 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
     private Map map;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     /**
      * @see ArrayList<IMobile></IMobile>
@@ -65,6 +66,20 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
         this.levelType = levelType ;
 
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
+=======
+    private Level level ;
+    private ArrayList<IMobile> mobiles;
+    private ArrayList<IMobile> motionless;
+    private IMobile hero ;
+    private int levelType ;
+
+    public BoulderDashModel(int levelType , int levelID){
+        this.mobiles = new ArrayList<>() ;
+        this.motionless = new ArrayList<>() ;
+
+        this.levelType = levelType ;
+
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
         this.level = new Level(levelType , levelID) ;
         this.level.setBoulderDashModel(this);
         //this.level.getLevel(levelID);
@@ -85,6 +100,11 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
     public void addMobile(IMobile mobile) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        this.mobiles.add(mobile) ;
+        mobile.setBoulderDashModel(this) ;
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
         this.mobiles.add(mobile) ;
         mobile.setBoulderDashModel(this) ;
@@ -99,6 +119,10 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
     public void removeMobile(IMobile mobile) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        this.mobiles.remove(mobile) ;
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
         this.mobiles.remove(mobile) ;
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
@@ -132,7 +156,10 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
     public void setMobilesHavesMoved() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
         this.setChanged() ;
@@ -144,6 +171,9 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
         hero.setBoulderDashModel(this);
         this.addMobile(this.hero);
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
+=======
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b

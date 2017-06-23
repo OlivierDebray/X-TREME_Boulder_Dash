@@ -24,39 +24,15 @@ public class BoulderDashController implements IOrderPerformer {
     private IViewSystem viewSystem ;
 
     /**
-<<<<<<< HEAD
-<<<<<<< HEAD
      * Builder of BoulderDashController
      * When constructing a boulderDashController object, the boulderDashModel matches the boulderDashModel
      * @param boulderDashModel
-=======
-     * Set a new instance of the Controller
-     * @param boulderDashModel
-     *      Tha current Model instance of the game
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
-=======
-     * Set a new instance of the Controller
-     * @param boulderDashModel
-     *      Tha current Model instance of the game
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
      * @see IBoulderDashModel
      */
     public BoulderDashController (IBoulderDashModel boulderDashModel) {
         this.boulderDashModel = boulderDashModel ;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    /**
-     * Method of moving the player
-     * @param stringUserOrder
-     * @throws Exception
-     */
-
-=======
-=======
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
     /**
      * @param stringUserOrder
      *      The string corresponding to the user's order
@@ -64,10 +40,6 @@ public class BoulderDashController implements IOrderPerformer {
      * @see IBoulderDashModel
      * @see UserOrder
      */
-<<<<<<< HEAD
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
-=======
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
     public void orderPerform (String stringUserOrder) throws Exception {
         UserOrder userOrder = new UserOrder(stringUserOrder) ;
         if (userOrder != null) {
@@ -106,17 +78,8 @@ public class BoulderDashController implements IOrderPerformer {
     }
 
     /**
-<<<<<<< HEAD
-<<<<<<< HEAD
-     * This method allows to activate the end of the game
-=======
      * Launch the game
      * @see IViewSystem
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
-=======
-     * Launch the game
-     * @see IViewSystem
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
      */
     public void play() {
         this.gameLoop();
@@ -127,20 +90,10 @@ public class BoulderDashController implements IOrderPerformer {
         this.viewSystem.closeAll();
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-=======
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
     /**
      * The game loop, running while the player hasn't died or won
      * @see IBoulderDashModel
      */
-<<<<<<< HEAD
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
-=======
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
     public void gameLoop(){
         while (!this.isGameOver) {
             try {
@@ -163,23 +116,10 @@ public class BoulderDashController implements IOrderPerformer {
     }
 
     /**
-<<<<<<< HEAD
-<<<<<<< HEAD
-     * Method that manages collisions
-     * @param entity
-     * @see ArrayList<IMobile></IMobile>
-     * @see IMobile
-=======
-=======
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
      * Manage the collision between the current mobile (here known as entity) and the other mobiles (Mobile and Motionless objects)
      * @param entity
      * @see IMobile
      * @see IBoulderDashModel
-<<<<<<< HEAD
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
-=======
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
      */
     private void manageEntityCollision(IMobile entity) {
         final ArrayList<IMobile> target = new ArrayList<IMobile>();
@@ -296,25 +236,11 @@ public class BoulderDashController implements IOrderPerformer {
     }
 
     /**
-<<<<<<< HEAD
-<<<<<<< HEAD
-     *This method makes it possible to know the position of the mobile
-     * @param mobile
-     * @param entity
-     * @return false
-     * @see IMobile
-=======
-=======
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
      * Calculate if two mobiles are superposed
      * @param mobile
      * @param entity
      * @see IMobile
      * @return if yes or no the mobiles are superposed
-<<<<<<< HEAD
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
-=======
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
      */
     private boolean isEntityOnMobile(IMobile mobile, IMobile entity) {
         if ((entity.getPositionY() == mobile.getPositionY()) && (entity.getPositionX() == mobile.getPositionX())) {
@@ -326,13 +252,6 @@ public class BoulderDashController implements IOrderPerformer {
     }
 
     /**
-<<<<<<< HEAD
-<<<<<<< HEAD
-     * This method allows to define the ViewSystem
-=======
-     * Set the ViewSystem instance of the controller to the one in parameter
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
-=======
      * Set the ViewSystem instance of the controller to the one in parameter
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
      * @param viewSystem
@@ -343,21 +262,9 @@ public class BoulderDashController implements IOrderPerformer {
     }
 
     /**
-<<<<<<< HEAD
-<<<<<<< HEAD
-     * This method allows to return the ViewSystem
-     * @return viewSystem
-     * @see IViewSystem
-=======
      * Get the ViewSystem instance of the controller
      * @see IViewSystem
      * @return the ViewSystem instance
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
-=======
-     * Get the ViewSystem instance of the controller
-     * @see IViewSystem
-     * @return the ViewSystem instance
->>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
      */
     public IViewSystem getViewSystem () {
         return this.viewSystem ;

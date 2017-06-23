@@ -27,7 +27,11 @@ final class BoulderDashBDDConnector {
     /** The url. */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private static String                  url      = "jdbc:mysql:http://localhost/phpmyadmin/db_structure.php?server=1&db=x-trem+boulderdash&token=ebcb77e9a9510856b7ed71afde50a70f";
+=======
+    private static String                  url      = "jdbc:mysql://localhost:3306/boulderdash?verifyServerCertificate=false&useSSL=true";
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
     private static String                  url      = "jdbc:mysql://localhost:3306/boulderdash?verifyServerCertificate=false&useSSL=true";
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
