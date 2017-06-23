@@ -45,12 +45,16 @@ public class EventPerformer implements IEventPerformer {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /**
      * This method allows to show the user in what direction the player is going
      * @param keyCode
      * @return userOrder
      */
     public String keyCodeToUserOrder (final int keyCode) {
+=======
+    public String keyEventToUserOrder (final KeyEvent keyEvent) {
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
     public String keyEventToUserOrder (final KeyEvent keyEvent) {
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b

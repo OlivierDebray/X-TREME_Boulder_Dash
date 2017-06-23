@@ -19,7 +19,11 @@ public class UserOrder implements IUserOrder {
 
     /**
 <<<<<<< HEAD
+<<<<<<< HEAD
      * Builder of UserOrder
+=======
+     * Instantiate a new UserOrder object whose order is the one in parameter
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
      * Instantiate a new UserOrder object whose order is the one in parameter
 >>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
@@ -65,8 +69,13 @@ public class UserOrder implements IUserOrder {
 
     /**
 <<<<<<< HEAD
+<<<<<<< HEAD
      * This method allows return the order.toString
      * @return order.toString()
+=======
+     * Get the order of the instance
+     * @return the order and cast it into a string
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
      * Get the order of the instance
      * @return the order and cast it into a string

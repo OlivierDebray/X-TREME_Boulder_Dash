@@ -9,6 +9,7 @@ public class Dimension {
     private int height;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /**
      * Builder of Dimension
      * @param width
@@ -17,6 +18,11 @@ public class Dimension {
     public Dimension (final int width , final int height) {
         this.setWidth(width);
         this.setHeight(height);
+=======
+    public Dimension (int width ,int height) {
+        this.width = width;
+        this.height = height;
+>>>>>>> dcd48c502207a0c23f7451bd1709f658a80f2d4b
 =======
     public Dimension (int width ,int height) {
         this.width = width;
