@@ -9,7 +9,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
 /**
- * Created by Vincent on 14/06/2017.
+ * @author Vincent Alayrac vincent.alayrac@viacesi.fr
+ *         Made on 14/06/2017.
  */
 
 public class GraphicsBuilder implements IGraphicsBuilder {

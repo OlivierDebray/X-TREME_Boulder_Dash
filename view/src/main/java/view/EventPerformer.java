@@ -8,7 +8,8 @@ import java.awt.event.KeyEvent;
 import java.util.Objects;
 
 /**
- * Created by Vincent on 14/06/2017.
+ * @author Vincent Alayrac vincent.alayrac@viacesi.fr
+ *         Made on 14/06/2017.
  */
 
 public class EventPerformer implements IEventPerformer {

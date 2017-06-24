@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 /**
- * Created by Théo on 16/06/2017.
+ * @author Théo Robineau théo.robineau@viacesi.fr
+ *         Made on 16/06/2017.
  */
 
 public class BoulderDashModel extends Observable implements IBoulderDashModel {

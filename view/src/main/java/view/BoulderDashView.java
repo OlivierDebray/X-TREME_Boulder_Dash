@@ -8,7 +8,8 @@ import javax.swing.*;
 import java.util.Observable;
 
 /**
- * Created by Vincent on 14/06/2017.
+ * @author Vincent Alayrac vincent.alayrac@viacesi.fr
+ *         Made on 14/06/2017.
  */
 
 public class BoulderDashView implements IViewSystem, Runnable {
