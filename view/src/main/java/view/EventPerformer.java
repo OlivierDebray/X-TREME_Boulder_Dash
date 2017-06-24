@@ -42,37 +42,32 @@ public class EventPerformer implements IEventPerformer {
                 case 'q':
                     userOrder = "LEFT";
                     break;
-                case 'w' :
-                    userOrder = "A";
-                    break;
-                case 'x' :
-                    userOrder = "B";
-                    break;
-                case ' ':
-                    userOrder = "START";
-                    break;
                 default:
                     userOrder = "NONE";
                     break ;
             }
         }
+        else if (keyEvent.getID() == 401) {
+            switch (keyEvent.getKeyChar()) {
+                case ' ':
+                    userOrder = "START";
+                    break;
+                default :
+                    userOrder = "NONE" ;
+                    break ;
+            }
+        }
         else if (keyEvent.getID() == 402) {
             switch (keyEvent.getKeyChar()) {
+                case ' ':
+                    userOrder = "START_RELEASED";
+                    break;
                 case 'z' :
-                    userOrder = "NONE";
-                    break;
                 case 's':
-                    userOrder = "NONE";
-                    break;
                 case 'd':
-                    userOrder = "NONE";
-                    break;
                 case 'q':
-                    userOrder = "NONE";
-                    break;
                 case 'w' :
-                    userOrder = "NONE";
-                    break;
+                case 'x' :
                 default :
                     userOrder = "NONE" ;
                     break ;

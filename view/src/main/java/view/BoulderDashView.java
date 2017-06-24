@@ -16,17 +16,19 @@ public class BoulderDashView implements IViewSystem, Runnable {
     private EventPerformer eventPerformer ;
     private GraphicsBuilder graphicsBuilder ;
     private GameFrame gameFrame ;
+    private int zoom ;
 
-    public BoulderDashView (IOrderPerformer orderPerformer, IBoulderDashModel boulderDashModel, Observable observable ){
+    public BoulderDashView (IOrderPerformer orderPerformer, IBoulderDashModel boulderDashModel, Observable observable, int zoom ){
         this.observable = observable ;
+        this.zoom = zoom ;
         this.eventPerformer = new EventPerformer(orderPerformer) ;
-        this.graphicsBuilder = new GraphicsBuilder(boulderDashModel) ;
+        this.graphicsBuilder = new GraphicsBuilder(boulderDashModel , zoom) ;
         SwingUtilities.invokeLater(this);
     }
 
     @Override
     public void run() {
-        this.gameFrame = new GameFrame("X-TREME BoulderDash !", this.eventPerformer, this.graphicsBuilder, this.observable);
+        this.gameFrame = new GameFrame("X-TREME BoulderDash !", this.eventPerformer, this.graphicsBuilder, this.observable , zoom);
     }
 
     @Override

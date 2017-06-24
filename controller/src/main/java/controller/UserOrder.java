@@ -45,6 +45,9 @@ public class UserOrder implements IUserOrder {
             case "START":
                 this.order = Order.START ;
                 break ;
+            case "START_RELEASED":
+                this.order = Order.START_RELEASED ;
+                break ;
             default :
                 this.order = Order.NONE ;
                 break ;

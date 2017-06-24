@@ -11,5 +11,6 @@ public enum Order {
     A,
     B,
     START,
+    START_RELEASED,
     NONE
 }
