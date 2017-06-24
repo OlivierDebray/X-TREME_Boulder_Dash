@@ -18,6 +18,7 @@ public class BoulderDashController implements IOrderPerformer {
     private boolean isGameOver = false;
     private IBoulderDashModel boulderDashModel;
     private IViewSystem viewSystem ;
+    private boolean isActionCurrent = false ;
 
     /**
      * Set a new instance of the Controller
@@ -44,25 +45,18 @@ public class BoulderDashController implements IOrderPerformer {
                 String direction ;
                 switch (userOrder.getOrder()) {
                     case "UP":
-                        direction = userOrder.getOrder();
-                        break ;
                     case "RIGHT":
-                        direction = userOrder.getOrder();
-                        break ;
                     case "DOWN":
-                        direction = userOrder.getOrder();
-                        break ;
                     case "LEFT":
-                        direction = userOrder.getOrder();
-                        break ;
-                    case "A":
-                        direction = userOrder.getOrder();
-                        break ;
-                    case "B":
-                        direction = userOrder.getOrder();
+                        direction = userOrder.getOrder() ;
                         break ;
                     case "START":
-                        direction = userOrder.getOrder();
+                        this.isActionCurrent = true ;
+                        direction = this.boulderDashModel.getPlayer().getDirection() ;
+                        break ;
+                    case "START_RELEASED" :
+                        this.isActionCurrent = false ;
+                        direction = this.boulderDashModel.getPlayer().getDirection() ;
                         break ;
                     default:
                         direction = "NONE" ;
@@ -146,6 +140,8 @@ public class BoulderDashController implements IOrderPerformer {
                     if ((Objects.equals(entity.getName(), "class model.Hero"))) {
                         this.boulderDashModel.removeMobile(mobile);
                         diamondCounter++ ;
+                        if (this.isActionCurrent)
+                            entity.reverseMove(entity.getDirection());
                     }
                     else if ((Objects.equals(entity.getName(), "class model.Boulder")) || (Objects.equals(entity.getName(), "class model.Diamond"))) {
                         entity.reverseMove(entity.getDirection());
@@ -191,7 +187,8 @@ public class BoulderDashController implements IOrderPerformer {
                     case "dirt" :
                         if (Objects.equals(entity.getName(), "class model.Hero")) {
                             iterMotionless.remove();
-                            this.boulderDashModel.getPlayer().move();
+                            if (!this.isActionCurrent)
+                                entity.move();
                         }
                         else {
                             entity.reverseMove(entity.getDirection());

@@ -19,16 +19,18 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
     private ArrayList<IMobile> motionless;
     private IMobile hero ;
     private int levelType ;
+    private int zoom ;
 
-    public BoulderDashModel(int levelType , int levelID){
+    public BoulderDashModel(int levelType , int levelID , int zoom){
         this.mobiles = new ArrayList<>() ;
         this.motionless = new ArrayList<>() ;
 
+        this.zoom = zoom ;
         this.levelType = levelType ;
 
-        this.level = new Level(levelType , levelID) ;
+        this.level = new Level(levelType , zoom) ;
         this.level.setBoulderDashModel(this);
-        //this.level.getLevel(levelID);
+        this.level.getLevel(levelID);
         this.level.buildLevel();
     }
 

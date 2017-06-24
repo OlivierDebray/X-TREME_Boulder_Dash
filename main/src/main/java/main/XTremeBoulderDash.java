@@ -10,16 +10,16 @@ import view.BoulderDashView;
  */
 
 public class XTremeBoulderDash {
-    private String name ;
+    private static int ZOOM = 2 ;
 
     public static void main (String[] args) {
 
-        final BoulderDashModel boulderDashModel = new BoulderDashModel(2 , 1);
+        final BoulderDashModel boulderDashModel = new BoulderDashModel(1 , 2 , ZOOM);
 
         boulderDashModel.buildArea(25 , 25);
 
         final BoulderDashController boulderDashController = new BoulderDashController(boulderDashModel);
-        final BoulderDashView boulderDashView = new BoulderDashView(boulderDashController, boulderDashModel, boulderDashModel);
+        final BoulderDashView boulderDashView = new BoulderDashView(boulderDashController, boulderDashModel, boulderDashModel , ZOOM);
         boulderDashController.setViewSystem(boulderDashView);
         boulderDashController.play();
     }

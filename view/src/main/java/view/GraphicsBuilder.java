@@ -17,9 +17,11 @@ public class GraphicsBuilder implements IGraphicsBuilder {
 
     private BufferedImage emptyMap;
     private IBoulderDashModel boulderDashModel;
+    private int zoom ;
 
-    public GraphicsBuilder (IBoulderDashModel boulderDashModel) {
+    public GraphicsBuilder (IBoulderDashModel boulderDashModel , int zoom) {
         this.boulderDashModel = boulderDashModel;
+        this.zoom = zoom ;
         this.buildEmptyMap();
     }
 
@@ -46,9 +48,9 @@ public class GraphicsBuilder implements IGraphicsBuilder {
     }
 
     public void buildEmptyMap() {
-        this.emptyMap = new BufferedImage(this.boulderDashModel.getArea().getDimensionWidth(), this.boulderDashModel.getArea().getDimensionHeight(), BufferedImage.TYPE_INT_RGB);
+        this.emptyMap = new BufferedImage(this.boulderDashModel.getArea().getDimensionWidth() * zoom, this.boulderDashModel.getArea().getDimensionHeight() * zoom, BufferedImage.TYPE_INT_RGB);
         final Graphics2D graphics = (Graphics2D) this.emptyMap.getGraphics();
-        graphics.drawImage(this.boulderDashModel.getArea().getImage(), 0, 0, this.boulderDashModel.getArea().getDimensionWidth(), this.boulderDashModel.getArea().getDimensionHeight(), null);
+        graphics.drawImage(this.boulderDashModel.getArea().getImage(), 0, 0, this.boulderDashModel.getArea().getDimensionWidth() * zoom, this.boulderDashModel.getArea().getDimensionHeight() * zoom, null);
     }
 
     public void drawMobile (IMobile mobile, Graphics graphics, ImageObserver observer){
@@ -56,6 +58,6 @@ public class GraphicsBuilder implements IGraphicsBuilder {
         final Graphics graphicsMobile = imageMobile.getGraphics();
 
         graphicsMobile.drawImage(mobile.getImage(), 0, 0, mobile.getWidth(), mobile.getHeight(), observer);
-        graphics.drawImage(imageMobile, mobile.getPositionX(), mobile.getPositionY(), observer);
+        graphics.drawImage(imageMobile, mobile.getPositionX() * zoom, mobile.getPositionY() * zoom, observer);
     }
 }
