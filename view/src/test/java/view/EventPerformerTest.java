@@ -25,6 +25,10 @@ import static javafx.scene.input.KeyCode.Q;
  * Created by Vincent on 14/06/2017.
  */
 
+/**
+ * Test the behavior of the EventPerformer class
+ * @see EventPerformer
+ */
 public class EventPerformerTest {
     private IOrderPerformer orderPerformer ;
     private EventPerformer eventPerformer ;

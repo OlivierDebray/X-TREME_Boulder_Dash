@@ -14,6 +14,10 @@ import static org.junit.Assert.*;
  *         Made on 24/06/2017
  */
 
+/**
+ * Test class to test the behavior of the BoulderDashModel class
+ * @see BoulderDashModel
+ */
 public class BoulderDashModelTest {
     BoulderDashModel boulderDashModel ;
     Position position ;

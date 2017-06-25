@@ -33,11 +33,10 @@ public class BoulderDashController implements IOrderPerformer {
     /**
      * @param stringUserOrder
      *      The string corresponding to the user's order
-     * @throws Exception when direction is set
      * @see IBoulderDashModel
      * @see UserOrder
      */
-    public void orderPerform (String stringUserOrder) throws Exception {
+    public void orderPerform (String stringUserOrder) {
         UserOrder userOrder = new UserOrder(stringUserOrder) ;
         if (userOrder != null) {
             final IMobile hero = this.boulderDashModel.getPlayer() ;

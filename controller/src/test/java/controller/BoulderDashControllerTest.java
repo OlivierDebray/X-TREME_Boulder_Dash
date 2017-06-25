@@ -15,6 +15,10 @@ import static org.junit.Assert.fail;
  *         Made on 16/06/2017
  */
 
+/**
+ * Test class to test the behavior of the BoulderDashController class
+ * @see BoulderDashController
+ */
 public class BoulderDashControllerTest {
     private IBoulderDashModel boulderDashModel ;
     private BoulderDashController boulderDashController ;
@@ -24,47 +28,14 @@ public class BoulderDashControllerTest {
         this.boulderDashController = new BoulderDashController(boulderDashModel) ;
     }
 
-    @Test
-    public void orderPerform() throws Exception {
-        BoulderDashController boulderDashController = new BoulderDashController(boulderDashModel) ;
-
-        try {
-            boulderDashController.orderPerform("UP");
-            fail("Should throw the direction") ;
-        }
-        catch (final Exception e) {
-            String expected = "UP" ;
-            Assert.assertEquals(expected , e.getMessage());
-        }
-    }
-
-    @Test
-    public void play() throws Exception {
-    }
-
-    @Test
-    public void gameLoop() throws Exception {
-    }
-
+    /**
+     * Test if the setter and the getter use and return the correct value
+     * @throws Exception
+     */
     @Test
     public void setAndGetViewSystem() throws Exception {
         IViewSystem viewSystem = null ;
         boulderDashController.setViewSystem(viewSystem);
         Assert.assertEquals(viewSystem , boulderDashController.getViewSystem());
-    }
-
-    @Test
-    public void manageEnemyCollision() throws Exception {
-
-    }
-
-    @Test
-    public void manageObjectCollision() throws Exception {
-
-    }
-
-    @Test
-    public void isEntityOnMobile() throws Exception {
-
     }
 }

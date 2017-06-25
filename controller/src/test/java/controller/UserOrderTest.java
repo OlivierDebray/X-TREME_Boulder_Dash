@@ -12,17 +12,18 @@ import static org.junit.Assert.*;
  *         Made on 16/06/2017
  */
 
+/**
+ * Test class to test to test the UserOrder class
+ * @see UserOrder
+ */
 public class UserOrderTest {
-    @Before
-    public void setUp() throws Exception {
-    }
 
-    @After
-    public void tearDown() throws Exception {
-    }
-
+    /**
+     * Test the instantiation of a new UserOrder and test its returned value
+     * @throws Exception
+     */
     @Test
-    public void getOrder() throws Exception {
+    public void constructorAndGetOrder() throws Exception {
         UserOrder userOrder = new UserOrder("UP") ;
         String expected = "UP" ;
         String result = userOrder.getOrder() ;
