@@ -5,6 +5,7 @@ import contract.IBoulderDashModel;
 import contract.IMobile;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Observable;
 
 /**
@@ -141,7 +142,9 @@ public class BoulderDashModel extends Observable implements IBoulderDashModel {
      * @param hero
      * @see IMobile
      */
-    public void addPlayer(IMobile hero) {
+    public void addPlayer(IMobile hero) throws Exception {
+        if (!Objects.equals(hero.getName(), "class model.Hero"))
+            throw new Exception("Parameter should be an Hero object !") ;
         this.hero = hero ;
         hero.setBoulderDashModel(this);
         this.addMobile(this.hero);

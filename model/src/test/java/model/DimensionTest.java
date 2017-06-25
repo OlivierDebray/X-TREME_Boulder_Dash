@@ -1,6 +1,5 @@
 package model;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,4 +45,14 @@ public class DimensionTest {
         Assert.assertEquals(ExpectedHeight, height);
     }
 
+    @Test
+    public void outRangeSetWidthAndHeight () throws Exception {
+        try {
+            this.dimension.setHeight(-1);
+            this.dimension.setWidth(-2);
+        } catch (Exception e) {
+            String expectedException = "Dimension value should not be negative !" ;
+            Assert.assertEquals(expectedException , e.getMessage());
+        }
+    }
 }

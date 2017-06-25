@@ -15,8 +15,12 @@ public class Dimension {
      * @param height
      */
     public Dimension (int width ,int height) {
-        this.width = width;
-        this.height = height;
+        try {
+            this.setWidth(width);
+            this.setHeight(height);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -40,7 +44,9 @@ public class Dimension {
      * Defines the Width
      * @param width
      */
-    public void setWidth(int width){
+    public void setWidth(int width) throws Exception {
+        if (width < 0)
+            throw new Exception("Dimension value should not be negative !") ;
         this.width = width;
     }
 
@@ -56,7 +62,9 @@ public class Dimension {
      * Defines the Height
      * @param height
      */
-    public void setHeight(int height){
+    public void setHeight(int height) throws Exception {
+        if (height < 0)
+            throw new Exception("Dimension value should not be negative !") ;
         this.height = height;
     }
 }

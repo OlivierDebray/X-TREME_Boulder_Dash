@@ -17,8 +17,12 @@ public class Position {
      * @param y
      */
     public Position(int x, int y){
-        this.x = x;
-        this.y = y;
+        try {
+            this.setX(x);
+            this.setY(y);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -29,7 +33,13 @@ public class Position {
         this(position.getX(), position.getY());
     }
 
-    public void setX(int x){
+    public void setX(int x) {
+        if (x < 0 || x > 25*16)
+            try {
+                throw new Exception("Position should not be out of map !") ;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         this.x = x;
     }
 
@@ -37,7 +47,13 @@ public class Position {
         return this.x;
     }
 
-    public void setY(int y ){
+    public void setY(int y ) {
+        if (y < 0 || y > 25*16)
+            try {
+                throw new Exception("Position should not be out of map !") ;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         this.y = y;
     }
 

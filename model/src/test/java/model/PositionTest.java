@@ -22,7 +22,7 @@ public class PositionTest {
 
 
     @Test
-    public void setX()  {
+    public void setX() throws Exception {
         int ExpectedX = 1;
         position.setX(1);
         int x =  position.getX();
@@ -36,7 +36,7 @@ public class PositionTest {
     }
 
     @Test
-    public void setY(){
+    public void setY() throws Exception {
         int ExpectedY = 2;
         position.setY(2);
         int y = position.getY();
@@ -65,4 +65,14 @@ public class PositionTest {
         Assert.assertEquals(ExpectedYmax, yMax);
     }
 
+    @Test
+    public void outRangeSetXAndY () {
+        try {
+            this.position.setX(26*16);
+            this.position.setY(-1) ;
+        } catch (Exception e) {
+            String expectedException = "Position should not be out of map !" ;
+            Assert.assertEquals(expectedException , e.getMessage());
+        }
+    }
 }
