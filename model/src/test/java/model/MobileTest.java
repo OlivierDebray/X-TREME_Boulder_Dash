@@ -12,7 +12,8 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 /**
- * Created by Théo on 19/06/2017.
+ * @author Théo Robineau théo.robineau@viacesi.fr
+ *         Made on 19/06/2017.
  */
 public class MobileTest {
     Mobile mobile;

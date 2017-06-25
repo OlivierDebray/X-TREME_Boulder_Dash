@@ -1,7 +1,8 @@
 package model;
 
 /**
- * Created by Théo on 16/06/2017.
+ * @author Théo Robineau théo.robineau@viacesi.fr
+ *         Made on 16/06/2017.
  */
 
 public class Position {
@@ -10,7 +11,11 @@ public class Position {
     private int xMax = 1;
     private int yMax = 1;
 
-
+    /**
+     * 1st Builder of Position
+     * @param x
+     * @param y
+     */
     public Position(int x, int y){
         try {
             this.setX(x);
@@ -20,6 +25,10 @@ public class Position {
         }
     }
 
+    /**
+     * 2nd Builder of Position
+     * @param position
+     */
     public Position(final Position position){
         this(position.getX(), position.getY());
     }

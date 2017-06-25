@@ -11,17 +11,51 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by Théo on 14/06/2017.
+ * @author Théo Robineau théo.robineau@viacesi.fr
+ *         Made on 14/06/2017.
  */
 
 public class Mobile implements IMobile {
+
+    /**
+     * @see Image
+     */
     private Image images[];
+
+    /**
+     * @see Position
+     */
     private Position position;
+
+    /**
+     * @see Dimension
+     */
     private Dimension dimension;
+
+    /**
+     * @see Direction
+     */
     private Direction direction;
+
+    /**
+     * @see IBoulderDashModel
+     */
     private IBoulderDashModel boulderDashModel;
+
     private int properID ;
 
+    /**
+     * Builder of Mobile
+     * @param direction
+     * @param position
+     * @param dimension
+     * @param mobileName
+     * @param levelType
+     * @param properID
+     * @see Direction
+     * @see Position
+     * @see Dimension
+     */
     public Mobile(Direction direction, Position position, final Dimension dimension, final String mobileName , final int levelType , final int properID){
         this.direction = direction;
         this.position = position;
@@ -39,6 +73,10 @@ public class Mobile implements IMobile {
         return this.getClass().toString() ;
     }
 
+    /**
+     *
+     Defines the movements of mobile enemies
+     */
     @Override
     public void move() {
         if (this.isEnemy()) {
@@ -95,6 +133,10 @@ public class Mobile implements IMobile {
         }
     }
 
+    /**
+     * Reverse moves of Enemy
+     * @param direction
+     */
     @Override
     public void reverseMove (String direction) {
         switch (direction) {
@@ -131,6 +173,12 @@ public class Mobile implements IMobile {
         this.position.setX(this.position.getX() - 16);
     }
 
+    /**
+     * Associates the images with the different movements
+     * @param mobileName
+     * @param levelType
+     * @throws IOException
+     */
     public void buildAllImages(final String mobileName , final int levelType) throws IOException{
         switch (mobileName) {
             case "hero" :
@@ -166,11 +214,19 @@ public class Mobile implements IMobile {
         }
     }
 
+    /**
+     * Allows to read the Direction
+     * @return Direction
+     */
     @Override
     public String getDirection() {
         return this.direction.toString();
     }
 
+    /**
+     * Defines the different Direction
+     * @param direction
+     */
     @Override
     public void setDirection(String direction) {
         switch (direction){
@@ -195,36 +251,64 @@ public class Mobile implements IMobile {
         }
     }
 
+    /**
+     * Allows to know the position X
+     * @return
+     */
     @Override
     public int getPositionX() {
         return this.position.getX();
     }
 
+    /**
+     * Allows to know the position Y
+     * @return
+     */
     @Override
     public int getPositionY() {
         return this.position.getY();
     }
 
+    /**
+     * Allows to know the position X Max
+     * @return
+     */
     @Override
     public int getPositionXMax() {
         return 0;
     }
 
+    /**
+     * Allows to know the position Y Max
+     * @return
+     */
     @Override
     public int getPositionYMax() {
         return 0;
     }
 
+    /**
+     * Allows to know the Width Dimension
+     * @return
+     */
     @Override
     public int getDimensionWidth() {
         return this.dimension.getWidth();
     }
 
+    /**
+     * Allows to know the Height Dimension
+     * @return
+     */
     @Override
     public int getDimensionHeight() {
         return this.dimension.getHeight();
     }
 
+    /**
+     * Allows to know where the mobile is going
+     * @return the Height and Width
+     */
     @Override
     public int getWidth() {
         switch (this.direction) {
@@ -239,6 +323,10 @@ public class Mobile implements IMobile {
         }
     }
 
+    /**
+     * Allows to know where the mobile is going
+     * @return the Height and Width
+     */
     @Override
     public int getHeight() {
         switch (this.direction) {
@@ -257,6 +345,10 @@ public class Mobile implements IMobile {
         return this.properID ;
     }
 
+    /**
+     * Allows to know the image associate with the position
+     * @return
+     */
     @Override
     public Image getImage() {
         if (this.getClass() == this.boulderDashModel.getPlayer().getClass()) {
@@ -267,6 +359,10 @@ public class Mobile implements IMobile {
         }
     }
 
+    /**
+     * Know the position in the Area
+     * @param area
+     */
     @Override
     public void placeInArea(IArea area) {
         this.position.setXmax(area.getDimensionWidth());
