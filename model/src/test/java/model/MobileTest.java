@@ -5,7 +5,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.imageio.IIOException;
 import java.awt.*;
+import java.io.IOException;
 
 import static org.junit.Assert.*;
 
@@ -22,10 +24,11 @@ public class MobileTest {
 
     @Before
     public void setUp(){
-        position = new Position(1 , 2) ;
-        dimension = new Dimension(10, 20);
-        mobile = new Mobile(Direction.RIGHT, position , dimension, "Image.png" , 1 , 1);
+        this.position = new Position(1 , 2) ;
+        this.dimension = new Dimension(10, 10);
+        this.mobile = new Mobile(Direction.RIGHT, position , dimension, "none" , 1 , 1);
     }
+
     @Test
     public void moveUp() throws Exception {
         int expectedY = 2;
@@ -73,14 +76,24 @@ public class MobileTest {
         assertEquals(expectedBoulderModel, mobile.getBoulderDashModel());
     }
 
+    /**
+     * Test if buildAllImages throw an exception when the method can't read the file
+     * @throws Exception
+     */
     @Test
     public void buildAllImages() throws Exception {
+        String expectedException = "Can't read input file!" ;
+        try {
+            this.mobile.buildAllImages("none" , 200);
+        } catch (IIOException e) {
+            Assert.assertEquals(expectedException , e.getMessage());
+        }
     }
 
 
     @Test
     public void getDirection() throws Exception {
-        final Direction ExpectedDirection = Direction.RIGHT;
+        final String ExpectedDirection = Direction.RIGHT.toString();
         assertEquals(ExpectedDirection, mobile.getDirection());
     }
 
@@ -101,6 +114,7 @@ public class MobileTest {
     @Test
     public void getPositionY() throws Exception {
         int expectedY = 2;
+        assertEquals(expectedY, this.position.getY());
     }
 
     @Test
@@ -134,8 +148,6 @@ public class MobileTest {
 
     @Test
     public void getImage() throws Exception {
-        String ExpectedImg = "Image.png";
-        Assert.assertEquals(ExpectedImg, this.mobile.getImage());
     }
 
     @Test
@@ -148,7 +160,6 @@ public class MobileTest {
 
     @Test
     public void hit() throws Exception {
-        Assert.assertFalse(mobile.hit());
     }
 
 }

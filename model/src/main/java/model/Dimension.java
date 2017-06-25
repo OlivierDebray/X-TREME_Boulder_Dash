@@ -9,8 +9,12 @@ public class Dimension {
     private int height;
 
     public Dimension (int width ,int height) {
-        this.width = width;
-        this.height = height;
+        try {
+            this.setWidth(width);
+            this.setHeight(height);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public Dimension(final Dimension dimension){
@@ -21,7 +25,9 @@ public class Dimension {
         return this.width;
     }
 
-    public void setWidth(int width){
+    public void setWidth(int width) throws Exception {
+        if (width < 0)
+            throw new Exception("Dimension value should not be negative !") ;
         this.width = width;
     }
 
@@ -29,7 +35,9 @@ public class Dimension {
         return this.height ;
     }
 
-    public void setHeight(int height){
+    public void setHeight(int height) throws Exception {
+        if (height < 0)
+            throw new Exception("Dimension value should not be negative !") ;
         this.height = height;
     }
 }

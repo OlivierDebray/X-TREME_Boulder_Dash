@@ -97,7 +97,11 @@ public class Level {
                         this.boulderDashModel.addMobile(new Enemy(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16  * zoom, 16 * zoom) , levelType , "amoeba" , x+(y*10)));
                         break ;
                     case '@' :
-                        this.boulderDashModel.addPlayer(new Hero(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16  * zoom, 16 * zoom) , levelType, "hero" , x+(y*10)));
+                        try {
+                            this.boulderDashModel.addPlayer(new Hero(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16  * zoom, 16 * zoom) , levelType, "hero" , x+(y*10)));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         break ;
                     case 'O' :
                         this.boulderDashModel.addMotionless(new Motionless(new Position(x*16 , y*16) , new Dimension(16  * zoom, 16 * zoom) , "Dirt" , levelType , "dirt" , x+(y*10)));
