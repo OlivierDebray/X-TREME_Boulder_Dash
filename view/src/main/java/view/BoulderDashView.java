@@ -13,12 +13,41 @@ import java.util.Observable;
  */
 
 public class BoulderDashView implements IViewSystem, Runnable {
+
+    /**
+     * @see Observable
+     */
     private Observable observable ;
+
+    /**
+     * @see EventPerformer
+     */
     private EventPerformer eventPerformer ;
+
+    /**
+     * @see GraphicsBuilder
+     */
     private GraphicsBuilder graphicsBuilder ;
+
+    /**
+     * @see GameFrame
+     */
     private GameFrame gameFrame ;
+
     private int zoom ;
 
+    /**
+     * Builder of BoulderDashView
+     * @param orderPerformer
+     * @param boulderDashModel
+     * @param observable
+     * @param zoom
+     * @see IOrderPerformer
+     * @see IBoulderDashModel
+     * @see Observable
+     * @see GraphicsBuilder
+     * @see EventPerformer
+     */
     public BoulderDashView (IOrderPerformer orderPerformer, IBoulderDashModel boulderDashModel, Observable observable, int zoom ){
         this.observable = observable ;
         this.zoom = zoom ;

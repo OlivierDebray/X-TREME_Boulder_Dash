@@ -13,8 +13,17 @@ import java.util.Objects;
  */
 
 public class EventPerformer implements IEventPerformer {
+
+    /**
+     * @see IOrderPerformer
+     */
     private IOrderPerformer orderPerformer ;
 
+    /**
+     * Builder of EventPerform
+     * @param orderPerformer
+     * @see IOrderPerformer
+     */
     public EventPerformer (IOrderPerformer orderPerformer){
         this.orderPerformer = orderPerformer ;
     }
@@ -27,6 +36,11 @@ public class EventPerformer implements IEventPerformer {
         }
     }
 
+    /**
+     * This method allows to interpret the defined keyboard keys
+     * @param keyEvent
+     * @return the position of UserOrder (None, Up, Left etc...)
+     */
     public String keyEventToUserOrder (final KeyEvent keyEvent) {
         String userOrder;
         if (keyEvent.getID() == 400) {
