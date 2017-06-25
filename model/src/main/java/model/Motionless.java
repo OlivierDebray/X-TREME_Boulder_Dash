@@ -10,17 +10,49 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by Théo on 16/06/2017.
+ * @author Théo Robineau théo.robineau@viacesi.fr
+ *         Made on 16/06/2017.
  */
 public class Motionless implements IMobile {
+
+    /**
+     * @see Image
+     */
     private Image image;
+
     private String name ;
+
+    /**
+     * @see Position
+     */
     private Position position;
+
+    /**
+     * @see Dimension
+     */
     private Dimension dimension;
+
+    /**
+     * @see IBoulderDashModel
+     */
     private IBoulderDashModel boulderDashModel;
+
     private int properID ;
+
     private boolean isRemovable ;
 
+    /**
+     * Builder of Motionless
+     * Know the access path of the different motionless
+     * @param position
+     * @param dimension
+     * @param image
+     * @param levelType
+     * @param name
+     * @param properID
+     * @see Position
+     * @see Dimension
+     */
     public Motionless( final Position position, final Dimension dimension, final String image , final int levelType , final String name , final int properID){
         this.position = position ;
         this.dimension = dimension ;

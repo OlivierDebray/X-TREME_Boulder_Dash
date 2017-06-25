@@ -14,8 +14,17 @@ import java.util.Observer;
 
 public class GamePanel extends JPanel implements Observer {
     //private static final long serialVersionUID = 3987064896591403626L;
+
+    /**
+     * @see IGraphicsBuilder
+     */
     private IGraphicsBuilder graphicsBuilder ;
 
+    /**
+     * Builder of GamePanel, instantiate the new graphicBUilder
+     * @param graphicsBuilder
+     * @see IGraphicsBuilder
+     */
     public GamePanel (IGraphicsBuilder graphicsBuilder) {
         this.graphicsBuilder = graphicsBuilder ;
     }

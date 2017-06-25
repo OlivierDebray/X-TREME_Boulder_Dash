@@ -10,6 +10,10 @@ import java.sql.SQLException;
  */
 
 public class Level {
+
+    /**
+     * @see BoulderDashModel
+     */
     private BoulderDashModel boulderDashModel ;
     private int levelType ;
     private char[][] levelText ;
@@ -52,6 +56,10 @@ public class Level {
         */
     }
 
+    /**
+     * This getter allows to read the Map save in the BDD BoulderDash
+     * @param levelID
+     */
     public void getLevel(int levelID) {
         QueryLevel queryLevel = new QueryLevel();
         String map = "";
@@ -73,6 +81,19 @@ public class Level {
 
     }
 
+    /**
+     * This method build the level with the corresponding characters
+     * @see BoulderDashModel
+     * @see Position
+     * @see Dimension
+     * @see Diamond
+     * @see Direction
+     * @see Diamond
+     * @see Enemy
+     * @see Boulder
+     * @see Motionless
+     * @see Hero
+     */
     public void buildLevel () {
         for (int y = 0 ; y < 25 ; y++) {
 
