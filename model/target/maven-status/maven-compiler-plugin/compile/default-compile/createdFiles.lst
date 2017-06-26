@@ -1,3 +1,4 @@
+model\dao\QueryLevel.class
 model\Boulder.class
 model\dao\BoulderDashBDDConnector.class
 model\Motionless.class
@@ -5,8 +6,10 @@ model\BoulderDashModel.class
 model\Mobile.class
 model\Hero.class
 model\Enemy.class
+model\Mobile$1.class
 model\Map.class
 model\Position.class
+model\Level.class
 model\Object.class
 model\dao\AbstractDAO.class
 model\Diamond.class

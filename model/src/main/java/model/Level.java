@@ -23,37 +23,6 @@ public class Level {
         this.zoom = zoom ;
         this.levelType = levelType ;
         this.levelText = new char[30][30] ;
-
-        /*
-        this.levelText[0][0] = 'X' ;
-        this.levelText[10][0] = '@' ;
-        this.levelText[5][4] = 'B' ;
-        this.levelText[6][5] = 'H' ;
-        this.levelText[5][5] = 'H' ;
-        this.levelText[4][5] = 'H' ;
-        this.levelText[5][10] = '^' ;
-        this.levelText[0][10] = 'X' ;
-        this.levelText[0][11] = 'X' ;
-        this.levelText[7][5] = 'X' ;
-        this.levelText[5][6] = 'D' ;
-        this.levelText[7][6] = 'X' ;
-        this.levelText[5][7] = 'X' ;
-        this.levelText[7][7] = 'X' ;
-        this.levelText[5][8] = 'D' ;
-        this.levelText[7][8] = 'D' ;
-        this.levelText[5][12] = 'X' ;
-        this.levelText[8][22] = 'B' ;
-        this.levelText[14][23] = 'O' ;
-        this.levelText[13][23] = 'O' ;
-        this.levelText[12][23] = 'O' ;
-        this.levelText[11][23] = 'O' ;
-        this.levelText[10][23] = 'O' ;
-        this.levelText[9][23] = 'O' ;
-        this.levelText[8][23] = 'O' ;
-        this.levelText[7][23] = 'X' ;
-        this.levelText[22][23] = 'H' ;
-        this.levelText[21][23] = 'H' ;
-        */
     }
 
     /**
@@ -97,9 +66,6 @@ public class Level {
     public void buildLevel () {
         for (int y = 0 ; y < 25 ; y++) {
 
-            //this.levelText[24][y] = 'H' ;
-            //this.levelText[23][y] = 'H' ;
-
             for (int x = 0 ; x < 25 ; x++) {
                 switch (this.levelText[y][x]) {
                     case 'D' :
@@ -108,13 +74,13 @@ public class Level {
                     case 'X' :
                         this.boulderDashModel.addMobile(new Boulder(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16  * zoom, 16 * zoom) , levelType , "boulder" , x+(y*10)));
                         break ;
-                    case '^' :
+                    case 'B' :
                         this.boulderDashModel.addMobile(new Enemy(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16  * zoom, 16 * zoom) , levelType , "enemy_1" , x+(y*10)));
                         break ;
-                    case 'B' :
-                        this.boulderDashModel.addMobile(new Enemy(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16  * zoom, 16 * zoom) , levelType , "enemy_2" , x+(y*10)));
-                        break ;
-                    case '¤' :
+                    //case 'B' :
+                        //this.boulderDashModel.addMobile(new Enemy(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16  * zoom, 16 * zoom) , levelType , "enemy_2" , x+(y*10)));
+                        //break ;
+                    case '^' :
                         this.boulderDashModel.addMobile(new Enemy(Direction.NONE , new Position(x*16 , y*16) , new Dimension(16  * zoom, 16 * zoom) , levelType , "amoeba" , x+(y*10)));
                         break ;
                     case '@' :

@@ -14,7 +14,7 @@ public class XTremeBoulderDash {
 
     public static void main (String[] args) {
 
-        final BoulderDashModel boulderDashModel = new BoulderDashModel(1 , 1 , ZOOM);
+        final BoulderDashModel boulderDashModel = new BoulderDashModel(1 , 2 , ZOOM);
 
         boulderDashModel.buildArea(25 , 25);
 

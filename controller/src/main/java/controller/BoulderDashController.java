@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class BoulderDashController implements IOrderPerformer {
 
-    private static int TIME_SLEEP = 90;
+    private static int TIME_SLEEP = 120;
     private static int DIAMOND_NUMBER = 10 ;
     private int diamondCounter = 0 ;
     private boolean isGameOver = false;

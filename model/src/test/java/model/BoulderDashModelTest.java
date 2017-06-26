@@ -36,8 +36,8 @@ public class BoulderDashModelTest {
      */
     @Test
     public void getMobiles() throws Exception {
+        int expectedSize = this.boulderDashModel.getMobiles().size() + 1 ;
         this.boulderDashModel.addMobile(new Mobile(Direction.RIGHT, position , dimension, "none" , 1 , 1));
-        int expectedSize = 1 ;
         Assert.assertEquals(expectedSize , this.boulderDashModel.getMobiles().size()) ;
     }
 
@@ -47,8 +47,8 @@ public class BoulderDashModelTest {
      */
     @Test
     public void getMotionless() throws Exception {
+        int expectedSize = this.boulderDashModel.getMotionless().size() + 1 ;
         this.boulderDashModel.addMotionless(new Motionless(position , dimension, "none" , 1 , "none" , 1));
-        int expectedSize = 1 ;
         Assert.assertEquals(expectedSize , this.boulderDashModel.getMotionless().size()) ;
     }
 
